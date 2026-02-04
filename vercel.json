@@ -1,6 +1,7 @@
 {
-  "name": "b3prompt",
-  "framework": "static",
+  "framework": null,
   "buildCommand": null,
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "devCommand": null,
+  "installCommand": null
 }
