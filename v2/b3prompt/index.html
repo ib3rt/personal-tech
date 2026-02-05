@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B3Prompt - Master AI Prompt Engineering</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #6366f1; --primary-light: #818cf8; --accent: #22d3ee; --success: #10b981; --warning: #f59e0b; --danger: #ef4444;
+            --bg-dark: #0f0f1a; --bg-card: #1a1a2e; --text-primary: #ffffff; --text-secondary: #a1a1aa; --text-muted: #71717a; --border: #2d2d4a;
+            --gradient-1: linear-gradient(135deg, #6366f1 0%, #22d3ee 100%); --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.3);
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-dark); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
+        .bg-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
+        .bg-animation::before {
+            content: ''; position: absolute; width: 150%; height: 150%; top: -25%; left: -25%;
+            background: radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(34, 211, 238, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+            animation: bgFloat 20s ease-in-out infinite;
+        }
+        @keyframes bgFloat { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 33% { transform: translate(2%, 2%) rotate(1deg); } 66% { transform: translate(-1%, 1%) rotate(-1deg); } }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1rem 2rem; background: rgba(15, 15, 26, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: all 0.3s ease; }
+        nav.scrolled { padding: 0.75rem 2rem; background: rgba(15, 15, 26, 0.95); }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 800; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color 0.3s ease; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--gradient-1); transition: width 0.3s ease; }
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-links a:hover::after { width: 100%; }
+        .progress-container { position: fixed; top: 0; left: 0; width: 100%; height: 3px; z-index: 1001; }
+        .progress-bar { height: 100%; background: var(--gradient-1); width: 0%; transition: width 0.1s ease; }
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 6rem 2rem 4rem; position: relative; }
+        .hero-content { max-width: 1200px; text-align: center; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 50px; font-size: 0.875rem; color: var(--primary-light); margin-bottom: 2rem; animation: fadeInUp 0.8s ease; }
+        .hero-badge::before { content: ''; width: 8px; height: 8px; background: var(--success); border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.2); } }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; animation: fadeInUp 0.8s ease 0.2s backwards; }
+        .hero h1 span { background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero-subtitle { font-size: 1.25rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 3rem; animation: fadeInUp 0.8s ease 0.4s backwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; max-width: 900px; margin: 0 auto; animation: fadeInUp 0.8s ease 0.6s backwards; }
+        .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gradient-1); transform: scaleX(0); transition: transform 0.3s ease; }
+        .stat-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: var(--shadow-glow); }
+        .stat-card:hover::before { transform: scaleX(1); }
+        .stat-number { font-size: 2.5rem; font-weight: 800; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .stat-label { color: var(--text-secondary); font-size: 0.875rem; margin-top: 0.25rem; }
+        .cta-group { display: flex; gap: 1rem; justify-content: center; margin-top: 3rem; flex-wrap: wrap; animation: fadeInUp 0.8s ease 0.8s backwards; }
+        .btn { padding: 1rem 2rem; border-radius: 12px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; border: none; }
+        .btn-primary { background: var(--gradient-1); color: white; box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5); }
+        .btn-secondary { background: transparent; color: var(--text-primary); border: 2px solid var(--border); }
+        .btn-secondary:hover { border-color: var(--primary); background: rgba(99, 102, 241, 0.1); }
+        section { padding: 6rem 2rem; max-width: 1400px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-header h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+        .section-header p { color: var(--text-secondary); font-size: 1.125rem; max-width: 600px; margin: 0 auto; }
+        .modules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; }
+        .module-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; cursor: pointer; transition: all 0.4s ease; position: relative; overflow: hidden; }
+        .module-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--gradient-1); opacity: 0; transition: opacity 0.4s ease; }
+        .module-card:hover { transform: translateY(-8px); border-color: transparent; box-shadow: var(--shadow-glow); }
+        .module-card:hover::before { opacity: 0.1; }
+        .module-content { position: relative; z-index: 1; }
+        .module-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+        .module-icon { width: 60px; height: 60px; background: var(--gradient-1); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+        .module-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .module-lessons { color: var(--text-secondary); font-size: 0.875rem; }
+        .module-description { color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.7; }
+        .module-progress { background: var(--bg-dark); border-radius: 10px; height: 8px; overflow: hidden; }
+        .module-progress-bar { height: 100%; background: var(--gradient-1); border-radius: 10px; transition: width 1s ease; }
+        .module-progress-text { display: flex; justify-content: space-between; margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-muted); }
+        .roadmap-container { position: relative; padding: 2rem 0; }
+        .roadmap-line { position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; background: var(--border); transform: translateX(-50%); }
+        .roadmap-line::before { content: ''; position: absolute; top: 0; left: 50%; width: 100%; background: var(--gradient-1); transform: translateX(-50%); opacity: 0.3; }
+        .roadmap-item { display: flex; align-items: center; margin-bottom: 3rem; position: relative; }
+        .roadmap-item:nth-child(even) { flex-direction: row-reverse; }
+        .roadmap-content { width: 45%; background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; transition: all 0.3s ease; }
+        .roadmap-content:hover { border-color: var(--primary); transform: scale(1.02); }
+        .roadmap-dot { position: absolute; left: 50%; width: 20px; height: 20px; background: var(--gradient-1); border-radius: 50%; transform: translateX(-50%); border: 4px solid var(--bg-dark); z-index: 1; }
+        .roadmap-phase { display: inline-block; padding: 0.25rem 0.75rem; background: rgba(99, 102, 241, 0.2); color: var(--primary-light); border-radius: 20px; font-size: 0.75rem; font-weight: 600; margin-bottom: 0.75rem; }
+        .roadmap-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .roadmap-desc { color: var(--text-secondary); font-size: 0.875rem; }
+        .playground-container { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; }
+        .playground-panel { display: flex; flex-direction: column; }
+        .playground-header { padding: 1rem 1.5rem; background: rgba(0, 0, 0, 0.3); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .playground-title { font-weight: 600; font-size: 0.875rem; color: var(--text-secondary); }
+        .playground-body { flex: 1; padding: 1.5rem; }
+        .code-editor { background: var(--bg-dark); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; line-height: 1.8; resize: none; width: 100%; height: 100%; min-height: 300px; color: var(--text-primary); outline: none; }
+        .code-editor:focus { border-color: var(--primary); }
+        .ai-response { background: var(--bg-dark); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; line-height: 1.8; color: var(--text-secondary); min-height: 300px; overflow-y: auto; }
+        .ai-response pre { white-space: pre-wrap; word-wrap: break-word; }
+        .playground-actions { display: flex; gap: 0.75rem; padding: 1rem 1.5rem; background: rgba(0, 0, 0, 0.3); border-top: 1px solid var(--border); }
+        .playground-btn { padding: 0.75rem 1.25rem; border-radius: 8px; font-weight: 500; font-size: 0.875rem; cursor: pointer; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem; border: none; }
+        .playground-btn.primary { background: var(--gradient-1); color: white; }
+        .playground-btn.secondary { background: transparent; color: var(--text-secondary); border: 1px solid var(--border); }
+        .playground-btn:hover { transform: translateY(-2px); }
+        .templates-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .template-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; transition: all 0.3s ease; }
+        .template-card:hover { border-color: var(--primary); transform: translateY(-4px); }
+        .template-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+        .template-use-case { display: inline-block; padding: 0.25rem 0.75rem; background: rgba(34, 211, 238, 0.1); color: var(--accent); border-radius: 20px; font-size: 0.75rem; font-weight: 500; }
+        .template-name { font-size: 1.125rem; font-weight: 700; margin-bottom: 0.75rem; }
+        .template-preview { background: var(--bg-dark); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 1rem; position: relative; max-height: 120px; overflow: hidden; }
+        .template-preview::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background: linear-gradient(transparent, var(--bg-dark)); }
+        .template-actions { display: flex; gap: 0.75rem; }
+        .template-btn { flex: 1; padding: 0.75rem; border-radius: 8px; font-weight: 500; font-size: 0.875rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 0.5rem; border: none; }
+        .template-btn.primary { background: var(--gradient-1); color: white; }
+        .template-btn.secondary { background: transparent; color: var(--text-secondary); border: 1px solid var(--border); }
+        .template-btn:hover { transform: translateY(-2px); }
+        .template-btn.copied { background: var(--success); color: white; }
+        .exercises-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .exercise-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; transition: all 0.3s ease; }
+        .exercise-card:hover { border-color: var(--primary); transform: translateY(-4px); }
+        .exercise-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .difficulty-badge { padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+        .difficulty-badge.beginner { background: rgba(16, 185, 129, 0.1); color: var(--success); }
+        .difficulty-badge.intermediate { background: rgba(245, 158, 11, 0.1); color: var(--warning); }
+        .difficulty-badge.advanced { background: rgba(239, 68, 68, 0.1); color: var(--danger); }
+        .exercise-number { color: var(--text-muted); font-size: 0.75rem; }
+        .exercise-title { font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .exercise-description { color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1rem; }
+        .exercise-meta { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid var(--border); }
+        .exercise-time { color: var(--text-muted); font-size: 0.75rem; display: flex; align-items: center; gap: 0.25rem; }
+        .exercise-status { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--border); cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; font-size: 0.875rem; }
+        .exercise-status:hover { border-color: var(--primary); background: rgba(99, 102, 241, 0.1); }
+        .exercise-status.completed { background: var(--success); border-color: var(--success); color: white; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; }
+        .testimonial-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; transition: all 0.3s ease; }
+        .testimonial-card:hover { border-color: var(--primary); transform: translateY(-4px); }
+        .testimonial-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+        .testimonial-avatar { width: 56px; height: 56px; background: var(--gradient-1); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 700; }
+        .testimonial-name { font-weight: 700; font-size: 1.125rem; }
+        .testimonial-role { color: var(--text-secondary); font-size: 0.875rem; }
+        .testimonial-content { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem; }
+        .testimonial-stars { color: var(--warning); font-size: 1.25rem; }
+        .success-stories { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 3rem; margin-top: 4rem; }
+        .success-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .success-item { text-align: center; }
+        .success-icon { width: 80px; height: 80px; background: var(--gradient-1); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1rem; }
+        .success-stat { font-size: 2rem; font-weight: 800; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .success-label { color: var(--text-secondary); font-size: 0.875rem; }
+        .certificate-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 4rem; text-align: center; position: relative; overflow: hidden; }
+        .certificate-section::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(from 0deg, transparent, var(--primary), transparent 30%); animation: certificateRotate 10s linear infinite; opacity: 0.1; }
+        @keyframes certificateRotate { 100% { transform: rotate(360deg); } }
+        .certificate-content { position: relative; z-index: 1; }
+        .certificate-badge { width: 120px; height: 120px; background: var(--gradient-1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; margin: 0 auto 2rem; animation: certificatePulse 3s ease-in-out infinite; }
+        @keyframes certificatePulse { 0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); } 50% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(99, 102, 241, 0); } }
+        .certificate-title { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; }
+        .certificate-description { color: var(--text-secondary); max-width: 500px; margin: 0 auto 2rem; }
+        .certificate-requirements { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 2rem; }
+        .requirement-item { display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary); font-size: 0.875rem; }
+        .requirement-item .check { color: var(--success); }
+        footer { background: var(--bg-card); border-top: 1px solid var(--border); padding: 4rem 2rem 2rem; margin-top: 6rem; }
+        .footer-container { max-width: 1400px; margin: 0 auto; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+        .footer-brand p { color: var(--text-secondary); margin-top: 1rem; font-size: 0.875rem; }
+        .footer-title { font-weight: 700; margin-bottom: 1rem; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.75rem; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; transition: color 0.3s ease; }
+        .footer-links a:hover { color: var(--primary-light); }
+        .footer-bottom { padding-top: 2rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 0.875rem; }
+        .social-links { display: flex; gap: 1rem; }
+        .social-link { width: 40px; height: 40px; background: var(--bg-dark); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); text-decoration: none; transition: all 0.3s ease; }
+        .social-link:hover { border-color: var(--primary); color: var(--primary-light); transform: translateY(-2px); }
+        @media (max-width: 1024px) { .roadmap-line { left: 20px; } .roadmap-item, .roadmap-item:nth-child(even) { flex-direction: row; } .roadmap-content { width: calc(100% - 60px); margin-left: 40px; } .roadmap-dot { left: 20px; } .playground-container { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 768px) { .nav-links { display: none; } .hero h1 { font-size: 2rem; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .modules-grid { grid-template-columns: 1fr; } .testimonials-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; text-align: center; } .footer-bottom { flex-direction: column; gap: 1rem; } .certificate-section { padding: 2rem; } }
+        .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.5rem; display: flex; align-items: center; gap: 0.75rem; box-shadow: var(--shadow-glow); transform: translateY(100px); opacity: 0; transition: all 0.3s ease; z-index: 1000; }
+        .toast.show { transform: translateY(0); opacity: 1; }
+        .toast-icon { width: 24px; height: 24px; background: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.75rem; }
+        .typing-indicator { display: inline-flex; gap: 4px; }
+        .typing-indicator span { width: 8px; height: 8px; background: var(--text-muted); border-radius: 50%; animation: typing 1.4s infinite ease-in-out; }
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing { 0%, 100% { transform: translateY(0); opacity: 0.4; } 50% { transform: translateY(-8px); opacity: 1; } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">⚡ B3Prompt</div>
+            <ul class="nav-links">
+                <li><a href="#modules">Modules</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#playground">Playground</a></li>
+                <li><a href="#templates">Templates</a></li>
+                <li><a href="#exercises">Exercises</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🎓 #1 AI Prompt Course</div>
+            <h1>Master the Art of <span>AI Prompting</span></h1>
+            <p class="hero-subtitle">Transform from beginner to advanced prompt engineer. Learn to communicate with AI systems like ChatGPT, Claude, and Gemini to get exactly what you want.</p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" data-target="6">0</div>
+                    <div class="stat-label">Modules</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="50">0</div>
+                    <div class="stat-label">Lessons</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="15">0</div>
+                    <div class="stat-label">Templates</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="25">0</div>
+                    <div class="stat-label">Exercises</div>
+                </div>
+            </div>
+            <div class="cta-group">
+                <a href="#modules" class="btn btn-primary">Start Learning →</a>
+                <a href="#playground" class="btn btn-secondary">Try Playground</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modules Section -->
+    <section id="modules">
+        <div class="section-header">
+            <h2>📚 Course Modules</h2>
+            <p>Comprehensive curriculum designed to take you from basics to mastery</p>
+        </div>
+        <div class="modules-grid">
+            <div class="module-card reveal">
+                <div class="module-content">
+                    <div class="module-header">
+                        <div class="module-icon">🎯</div>
+                        <div>
+                            <h3 class="module-title">Module 1: Fundamentals</h3>
+                            <p class="module-lessons">8 lessons • 2 hours</p>
+                        </div>
+                    </div>
+                    <p class="module-description">Understanding AI, how LLMs work, and the basics of effective prompting. Perfect starting point for beginners.</p>
+                    <div class="module-progress"><div class="module-progress-bar" style="width: 0%"></div></div>
+                    <div class="module-progress-text"><span>0% Complete</span><span>0/8 lessons</span></div>
+                </div>
+            </div>
+            <div class="module-card reveal">
+                <div class="module-content">
+                    <div class="module-header">
+                        <div class="module-icon">🔧</div>
+                        <div>
+                            <h3 class="module-title">Module 2: Core Techniques</h3>
+                            <p class="module-lessons">10 lessons • 3 hours</p>
+                        </div>
+                    </div>
+                    <p class="module-description">Master essential prompting patterns including zero-shot, few-shot, chain-of-thought, and role-playing.</p>
+                    <div class="module-progress"><div class="module-progress-bar" style="width: 0%"></div></div>
+                    <div class="module-progress-text"><span>0% Complete</span><span>0/10 lessons</span></div>
+                </div>
+            </div>
+            <div class="module-card reveal">
+                <div class="module-content">
+                    <div class="module-header">
+                        <div class="module-icon">⚡</div>
+                        <div>
+                            <h3 class="module-title">Module 3: Advanced Strategies</h3>
+                            <p class="module-lessons">12 lessons • 4 hours</p>
+                        </div>
+                    </div>
+                    <p class="module-description">Learn complex prompting methods: tree of thoughts, self-consistency, retrieval-augmented generation.</p>
+                    <div class="module-progress"><div class="module-progress-bar" style="width: 0%"></div></div>
+                    <div class="module-progress-text"><span>0% Complete</span><span>0/12 lessons</span></div>
+                </div>
+            </div>
+            <div class="module-card reveal">
+                <div class="module-content">
+                    <div class="module-header">
+                        <div class="module-icon">🎨</div>
+                        <div>
+                            <h3 class="module-title">Module 4: Content Creation</h3>
+                            <p class="module-lessons">8 lessons • 2.5 hours</p>
+                        </div>
+                    </div>
+                    <p class="module-description">Create compelling content with AI: blogs, social media, marketing copy, and creative writing.</p>
+                    <div class="module
