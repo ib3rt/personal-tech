@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 All Content | b3rt.dev</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0f; color: #fff; line-height: 1.8; padding: 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #667eea; font-size: 2.5rem; margin-bottom: 1rem; }
+        .subtitle { color: #888; margin-bottom: 3rem; }
+        .section { margin-bottom: 3rem; }
+        .section h2 { color: #667eea; font-size: 1.8rem; margin-bottom: 1.5rem; border-bottom: 2px solid #252530; padding-bottom: 0.5rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .card { background: #15151a; border-radius: 12px; padding: 1.5rem; border: 1px solid #252530; transition: all 0.3s; }
+        .card:hover { transform: translateY(-5px); border-color: #667eea; }
+        .card h3 { color: #667eea; margin-bottom: 0.5rem; }
+        .card .date { color: #888; font-size: 0.875rem; margin-bottom: 1rem; }
+        .card p { color: #aaa; font-size: 0.95rem; margin-bottom: 1rem; }
+        .card a { display: inline-block; color: #22c55e; text-decoration: none; }
+        .card a:hover { text-decoration: underline; }
+        .tag { display: inline-block; background: #252530; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; margin-right: 0.5rem; color: #888; }
+        .hero { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 3rem; border-radius: 16px; margin-bottom: 3rem; text-align: center; }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .hero p { color: #aaa; font-size: 1.2rem; max-width: 600px; margin: 0 auto; }
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 3rem; }
+        .stat { background: #15151a; padding: 1.5rem; border-radius: 12px; text-align: center; }
+        .stat-number { font-size: 2.5rem; font-weight: 700; color: #667eea; }
+        .stat-label { color: #888; font-size: 0.875rem; }
+        footer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #252530; text-align: center; color: #666; }
+        footer a { color: #667eea; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>📚 All Content</h1>
+            <p>Complete index of all articles, blog posts, and resources from the Life OS ecosystem</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">9</div>
+                <div class="stat-label">Total Articles</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Journey Posts</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">1</div>
+                <div class="stat-label">Blog Post</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Main Sites</div>
+            </div>
+        </div>
+        
+        <section class="section">
+            <h2>🚀 Journey Articles</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>🚀 Genesis Day</h3>
+                    <p class="date">2026-02-04</p>
+                    <p>7 intelligent systems launched in one night. The beginning of Life OS.</p>
+                    <div><span class="tag">Genesis</span></div>
+                    <a href="journey/2026-02-04-genesis-day.html">Read Article →</a>
+                </article>
+                <article class="card">
+                    <h3>🔄 The Transformation</h3>
+                    <p class="date">2026-02-04</p>
+                    <p>How building in public transformed the development process.</p>
+                    <div><span class="tag">Building</span></div>
+                    <a href="journey/2026-02-04-transformation.html">Read Article →</a>
+                </article>
+                <article class="card">
+                    <h3>📋 Templates Published</h3>
+                    <p class="date">2026-02-04</p>
+                    <p>Publishing the templates that power Life OS automation.</p>
+                    <div><span class="tag">Templates</span></div>
+                    <a href="journey/2026-02-04-templates-published.html">Read Article →</a>
+                </article>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>🤖 Blog Posts</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>🤖 AI Trends Report 2026-02-05</h3>
+                    <p class="date">2026-02-05</p>
+                    <p>Key trends in AI: LLMs, voice interfaces, AI agents, local models, and multimodal AI.</p>
+                    <div><span class="tag">AI</span><span class="tag">Trends</span></div>
+                    <a href="blog/ai-trends-report.html">Read Report →</a>
+                </article>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>🖥️ Hardware & Courses</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>🤖 Build Your AI Powerhouse</h3>
+                    <p class="date">2026-02-05</p>
+                    <p>Self-hosted hardware that outperforms Mac Studio & Mac mini. Complete 4-week course.</p>
+                    <div><span class="tag">Hardware</span><span class="tag">Course</span></div>
+                    <a href="hardware-workstation/">Start Course →</a>
+                </article>
+                <article class="card">
+                    <h3>🎓 Universal Vibe Coding</h3>
+                    <p class="date">2025</p>
+                    <p>AI Prompt Improvement Course - Learn to craft powerful prompts.</p>
+                    <div><span class="tag">Course</span><span class="tag">AI</span></div>
+                    <a href="https://b3prompt.com/course" target="_blank">View Course →</a>
+                </article>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>🌐 All Sites</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>👨‍💻 b3rt.dev</h3>
+                    <p>Personal Brand & Life OS</p>
+                    <a href="https://b3rt.dev">Visit Site →</a>
+                </article>
+                <article class="card">
+                    <h3>🚀 b3prompt.com</h3>
+                    <p>AI Prompt Improvement Course</p>
+                    <a href="https://b3prompt.com">Visit Site →</a>
+                </article>
+                <article class="card">
+                    <h3>✨ Sparkling Solutions</h3>
+                    <p>Airbnb Cleaning Business</p>
+                    <a href="https://sparklingsolutions.biz">Visit Site →</a>
+                </article>
+                <article class="card">
+                    <h3>🛠️ BE Repaired</h3>
+                    <p>Handyman Services</p>
+                    <a href="https://be-repaired.b3rt.dev">Visit Site →</a>
+                </article>
+                <article class="card">
+                    <h3>💻 BE Repaired PC</h3>
+                    <p>Tech Repair Services</p>
+                    <a href="https://be-repaired-pc.b3rt.dev">Visit Site →</a>
+                </article>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2>📋 Templates & Resources</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>🎭 Soul Template</h3>
+                    <p>AI persona definition and behavior configuration.</p>
+                    <a href="templates/soul.html">View Template →</a>
+                </article>
+                <article class="card">
+                    <h3>🧠 Memory Template</h3>
+                    <p>Long-term memory system configuration.</p>
+                    <a href="templates/memory.html">View Template →</a>
+                </article>
+                <article class="card">
+                    <h3>👤 Personality Template</h3>
+                    <p>AI personality and tone settings.</p>
+                    <a href="templates/personality.html">View Template →</a>
+                </article>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Part of the <a href="index.html">Life OS</a> ecosystem</p>
+            <p style="margin-top: 0.5rem;">📚 All Content Index | Updated 2026-02-05</p>
+        </footer>
+    </div>
+</body>
+</html>

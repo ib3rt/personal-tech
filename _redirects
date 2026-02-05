@@ -1,25 +1,55 @@
 # Cloudflare Pages Redirects
 # GitHub → Cloudflare Pages Deployment
 
-# Journey articles - remove .html extension for clean URLs
-/journey/2026-02-04-genesis-day      /journey/2026-02-04-genesis-day.html   200
-/journey/2026-02-04-transformation   /journey/2026-02-04-transformation.html 200
+# All Sites Homepage
+/ https://b3rt.dev 200!
+
+# Content Index
+/content-index /content-index.html 200
+/content-index.html /content-index.html 200
+
+# Journey Section
+/journey /journey/ 200
+/journey/ /journey/index.html 200
+/journey/index /journey/index.html 200
+/journey/index.html /journey/index.html 200
+
+# Journey Articles
+/journey/2026-02-04-genesis-day /journey/2026-02-04-genesis-day.html 200
+/journey/2026-02-04-transformation /journey/2026-02-04-transformation.html 200
 /journey/2026-02-04-templates-published /journey/2026-02-04-templates-published.html 200
 
-# Blog posts
-/blog/ai-trends-report               /blog/ai-trends-report.html           200
+# Blog Section
+/blog /blog/ 200
+/blog/ /blog/index.html 200
+/blog/index /blog/index.html 200
+/blog/index.html /blog/index.html 200
 
-# Templates
-/templates/soul                       /templates/soul.html                  200
-/templates/memory                     /templates/memory.html                200
-/templates/personality                /templates/personality.html           200
+# Blog Posts
+/blog/ai-trends-report /blog/ai-trends-report.html 200
 
-# Hardware course
-/hardware-workstation                 /hardware-workstation/index.html      200
+# Templates Section
+/templates /templates/ 200
+/templates/ /templates/index.html 200
+/templates/index /templates/index.html 200
+/templates/index.html /templates/index.html 200
+
+# Template Files
+/templates/soul /templates/soul.html 200
+/templates/memory /templates/memory.html 200
+/templates/personality /templates/personality.html 200
+
+# Hardware Course
+/hardware-workstation /hardware-workstation/ 200
+/hardware-workstation/ /hardware-workstation/index.html 200
+/hardware-workstation/index /hardware-workstation/index.html 200
 /hardware-workstation/BUILD_AI_POWERHOUSE_COURSE /hardware-workstation/BUILD_AI_POWERHOUSE_COURSE.md 200
+/hardware-workstation/HARDWARE_RESEARCH /hardware-workstation/HARDWARE_RESEARCH.md 200
 
-# All .html files accessible without extension
-/*.html                                /*                                    200!
+# Legacy URLs
+/site-index /SITE_INDEX.md 200
+/sites /websites.html 200
+/websites /websites.html 200
 
-# Clean URL fallback
-*                                      /*.html                               200
+# All .html files accessible directly
+/*.html /*.html 200
