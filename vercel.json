@@ -1,7 +1,14 @@
+# Vercel Configuration
 {
   "framework": null,
   "buildCommand": null,
   "outputDirectory": ".",
   "devCommand": null,
-  "installCommand": null
+  "installCommand": null,
+  "routes": [
+    {
+      "src": "/journey/([^/]+\\.html)",
+      "dest": "/journey/$1"
+    }
+  ]
 }
