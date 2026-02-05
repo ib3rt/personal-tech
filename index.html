@@ -3,75 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>b3rt | Systems, Automation & Life OS</title>
-    <meta name="description" content="Building systems, automating life, and sharing the journey. Tech, productivity, and entrepreneurship.">
+    <title>b3rt.dev | Life OS - AI-Powered Personal Operating System</title>
+    <meta name="description" content="Building systems, automating life, and sharing the journey. Tech, productivity, and entrepreneurship powered by AI agents.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/design-system.css">
     <style>
-        :root {
-            --primary: #8B5CF6;
-            --primary-dark: #7C3AED;
-            --accent: #10B981;
-            --neutral: #64748B;
-            --dark: #0F172A;
-            --light: #F8FAFC;
-            --code: #1E293B;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background: var(--light);
-        }
-        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        /* Header */
-        header {
-            padding: 40px 0;
-            text-align: center;
-        }
-        .logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-        }
-        /* Hero */
+        /* Hero Override */
         .hero {
-            padding: 60px 0;
+            padding: var(--space-3xl) 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+            pointer-events: none;
         }
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: var(--space-lg);
         }
-        .hero h1 span { color: var(--primary); }
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
         .hero p {
-            font-size: 1.3rem;
-            color: var(--neutral);
+            font-size: 1.25rem;
             max-width: 600px;
-            margin: 0 auto 2rem;
+            margin: 0 auto var(--space-xl);
         }
         /* Terminal */
         .terminal {
-            background: var(--code);
-            border-radius: 16px;
-            padding: 30px;
-            margin: 40px 0;
-            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-            overflow: hidden;
+            background: var(--bg-elevated);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: var(--space-xl);
+            margin: var(--space-2xl) 0;
+            font-family: var(--font-mono);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .terminal-header {
             display: flex;
             gap: 8px;
-            margin-bottom: 20px;
+            margin-bottom: var(--space-lg);
         }
         .terminal-dot {
             width: 12px;
@@ -82,246 +66,357 @@
         .dot-yellow { background: #ffbd2e; }
         .dot-green { background: #27c93f; }
         .terminal-content {
-            color: #fff;
-            font-size: 1rem;
+            color: var(--text-primary);
+            font-size: 0.9375rem;
             line-height: 2;
         }
         .terminal-content .command {
-            color: #10B981;
-            margin-bottom: 5px;
+            color: var(--accent);
+            margin-bottom: var(--space-xs);
         }
         .terminal-content .output {
-            color: #94a3b8;
-            margin-bottom: 20px;
-            padding-left: 20px;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-lg);
+            padding-left: var(--space-lg);
         }
         .terminal-content .output a {
-            color: #8B5CF6;
+            color: var(--primary);
             text-decoration: none;
         }
         .terminal-content .output a:hover {
             text-decoration: underline;
         }
-        /* Cards */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin: 60px 0;
+        /* Feature Cards */
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: var(--space-xl);
+            transition: all var(--ease-normal);
         }
-        .card {
-            background: #fff;
-            border-radius: 16px;
-            padding: 30px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        .feature-card:hover {
+            transform: translateY(-6px);
             border-color: var(--primary);
+            box-shadow: var(--glow);
         }
-        .card-icon {
+        .feature-icon {
             font-size: 2.5rem;
-            margin-bottom: 20px;
+            margin-bottom: var(--space-md);
         }
-        .card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: var(--dark);
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: var(--space-sm);
         }
-        .card p {
-            color: var(--neutral);
-            margin-bottom: 20px;
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            margin-bottom: var(--space-lg);
         }
-        .card a {
+        .feature-card .card-link {
             color: var(--primary);
-            text-decoration: none;
             font-weight: 500;
-        }
-        .card a:hover {
-            text-decoration: underline;
-        }
-        /* Links */
-        .links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 40px 0;
-            flex-wrap: wrap;
-        }
-        .link-btn {
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 16px 30px;
-            background: var(--primary);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: 500;
-            transition: all 0.3s;
+            gap: var(--space-sm);
+            transition: all var(--ease-fast);
         }
-        .link-btn:hover {
-            background: var(--primary-dark);
+        .feature-card .card-link:hover {
+            color: var(--primary-light);
+            gap: var(--space-md);
+        }
+        /* Article Cards */
+        .article-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: var(--space-xl);
+            transition: all var(--ease-normal);
+            display: flex;
+            flex-direction: column;
+        }
+        .article-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+        }
+        .article-card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+        .article-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+        .article-meta {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+            margin-bottom: var(--space-sm);
+        }
+        .article-card h3 {
+            font-size: 1.125rem;
+            margin-bottom: var(--space-sm);
+        }
+        .article-card p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            flex-grow: 1;
+        }
+        /* Section Divider */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+            margin: var(--space-3xl) 0;
+        }
+        /* Tech Stack */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--space-md);
+        }
+        .tech-item {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: var(--space-lg);
+            text-align: center;
+            transition: all var(--ease-normal);
+        }
+        .tech-item:hover {
+            border-color: var(--primary);
             transform: translateY(-2px);
         }
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 60px 0;
-            color: var(--neutral);
-            border-top: 1px solid #e2e8f0;
-            margin-top: 60px;
+        .tech-item h4 {
+            font-size: 0.875rem;
+            margin-bottom: var(--space-xs);
         }
-        footer a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .terminal { padding: 20px; }
-            .terminal-content { font-size: 0.9rem; }
+        .tech-item p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin: 0;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <a href="#" class="logo">b3rt</a>
-        </header>
-
-        <section class="hero">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <a href="/" class="logo">b3rt<span class="gradient-text">.dev</span></a>
+            
             <h1>Systems, Automation & <span>Life OS</span></h1>
-            <p>Building systems, automating life, and sharing the journey. Tech, productivity, and entrepreneurship.</p>
-        </section>
-
-        <div class="terminal">
-            <div class="terminal-header">
-                <div class="terminal-dot dot-red"></div>
-                <div class="terminal-dot dot-yellow"></div>
-                <div class="terminal-dot dot-green"></div>
-            </div>
-            <div class="terminal-content">
-                <div class="command">$ whoami</div>
-                <div class="output">→ Entrepreneur building AI-powered businesses</div>
-                
-                <div class="command">$ ps aux | grep active_projects</div>
-                <div class="output">→ <a href="https://sparklingsolutions.biz">Sparkling Solutions</a> (Airbnb cleaning)</div>
-                <div class="output">→ <a href="https://be-repaired.b3rt.dev">BE Repaired</a> (Handyman services)</div>
-                <div class="output">→ <a href="https://b3prompt.com">B3Prompt</a> (AI Prompt Course)</div>
-                <div class="output">→ <a href="https://t3ch.b3rt.dev">Life OS</a> (AI assistant)</div>
-                
-                <div class="command">$ cat location.txt</div>
-                <div class="output">→ Building remotely, living intentionally</div>
-                
-                <div class="command">$ uptime</div>
-                <div class="output">→ Always optimizing ⚡</div>
-            </div>
-        </div>
-
-        <div class="links">
-            <a href="https://b3prompt.com" class="link-btn">📚 AI Prompt Course</a>
-            <a href="https://sparklingsolutions.biz" class="link-btn">✨ Sparkling Solutions</a>
-            <a href="https://be-repaired.b3rt.dev" class="link-btn">🛠️ BE Repaired</a>
-            <a href="/journey/" class="link-btn">📖 Building Journey</a>
-            <a href="/content-index.html" class="link-btn">📚 All Articles</a>
-            <a href="/hardware-workstation/" class="link-btn">🖥️ AI Hardware Course</a>
-            <a href="https://github.com/ib3rt" class="link-btn">💻 GitHub</a>
-        </div>
-
-        <div style="background: #f0f0f0; margin: 40px -30px; padding: 30px; border-radius: 12px;">
-            <h2 style="text-align: center; margin-bottom: 20px;">📖 Latest Articles</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-                <a href="/journey/2026-02-04-genesis-day.html" style="display: block; background: #fff; padding: 20px; border-radius: 8px; text-decoration: none; color: inherit; border: 1px solid #ddd;">
-                    <h4 style="color: #8B5CF6; margin-bottom: 8px;">🚀 Genesis Day</h4>
-                    <p style="color: #666; font-size: 0.9rem;">7 systems launched in one night</p>
-                </a>
-                <a href="/journey/2026-02-04-transformation.html" style="display: block; background: #fff; padding: 20px; border-radius: 8px; text-decoration: none; color: inherit; border: 1px solid #ddd;">
-                    <h4 style="color: #8B5CF6; margin-bottom: 8px;">🔄 The Transformation</h4>
-                    <p style="color: #666; font-size: 0.9rem;">Building in public journey</p>
-                </a>
-                <a href="/blog/ai-trends-report.html" style="display: block; background: #fff; padding: 20px; border-radius: 8px; text-decoration: none; color: inherit; border: 1px solid #ddd;">
-                    <h4 style="color: #8B5CF6; margin-bottom: 8px;">🤖 AI Trends Report</h4>
-                    <p style="color: #666; font-size: 0.9rem;">Latest in AI for 2026</p>
-                </a>
-            </div>
-        </div>
-
-        <div class="cards">
-            <div class="card">
-                <div class="card-icon">🤖</div>
-                <h3>16 AI Agents</h3>
-                <p>Specialized Genesis agents for finance, marketing, operations, and more.</p>
-                <a href="#">View Agents →</a>
+            <p>Building systems, automating life, and sharing the journey. Tech, productivity, and entrepreneurship powered by AI.</p>
+            
+            <!-- Terminal -->
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dot dot-red"></div>
+                    <div class="terminal-dot dot-yellow"></div>
+                    <div class="terminal-dot dot-green"></div>
+                </div>
+                <div class="terminal-content">
+                    <div class="command">$ whoami</div>
+                    <div class="output">→ Entrepreneur building AI-powered businesses</div>
+                    
+                    <div class="command">$ ps aux | grep active_projects</div>
+                    <div class="output">→ <a href="https://sparklingsolutions.biz">Sparkling Solutions</a> (Airbnb cleaning)</div>
+                    <div class="output">→ <a href="https://be-repaired.b3rt.dev">BE Repaired</a> (Handyman services)</div>
+                    <div class="output">→ <a href="https://b3prompt.com">B3Prompt</a> (AI Prompt Course)</div>
+                    <div class="output">→ <a href="/journey/">Life OS</a> (AI assistant)</div>
+                    
+                    <div class="command">$ cat location.txt</div>
+                    <div class="output">→ Building remotely, living intentionally</div>
+                    
+                    <div class="command">$ uptime</div>
+                    <div class="output">→ Always optimizing ⚡</div>
+                </div>
             </div>
             
-            <div class="card">
-                <div class="card-icon">🛠️</div>
-                <h3>AI Tools</h3>
-                <p>Content pipeline, market intelligence, quality scoring, and more.</p>
-                <a href="#">Explore Tools →</a>
-            </div>
-            
-            <div class="card">
-                <div class="card-icon">🚀</div>
-                <h3>Super Swarm</h3>
-                <p>99 agents working together on complex tasks autonomously.</p>
-                <a href="#">Learn More →</a>
-            </div>
-            
-            <div class="card">
-                <div class="card-icon">🎙️</div>
-                <h3>Voice AI</h3>
-                <p>Personal AI voice for announcements, content, and more.</p>
-                <a href="#">Try Voice →</a>
-            </div>
-
-            <div class="card" style="border-color: #8B5CF6;">
-                <div class="card-icon">🖥️</div>
-                <h3>Build AI Powerhouse</h3>
-                <p>Self-hosted hardware that outperforms Mac Studio. Complete course with specs.</p>
-                <a href="/hardware-workstation/">Start Course →</a>
+            <!-- Quick Links -->
+            <div class="links">
+                <a href="https://b3prompt.com" class="btn btn-primary">📚 AI Prompt Course</a>
+                <a href="https://sparklingsolutions.biz" class="btn btn-secondary">✨ Sparkling Solutions</a>
+                <a href="https://be-repaired.b3rt.dev" class="btn btn-secondary">🛠️ BE Repaired</a>
+                <a href="/journey/" class="btn btn-secondary">📖 Building Journey</a>
             </div>
         </div>
+    </section>
 
-        <section style="background: #f8fafc; margin: 60px -30px; padding: 60px 30px; border-radius: 16px;">
-            <h2 style="text-align: center; margin-bottom: 40px; font-size: 2rem;">📚 All Content</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-                <a href="journey/2026-02-04-genesis-day.html" style="display: block; background: #fff; padding: 25px; border-radius: 12px; text-decoration: none; color: inherit; border: 1px solid #e2e8f0; transition: all 0.3s;">
-                    <h4 style="color: #8B5CF6; margin-bottom: 8px;">🚀 Genesis Day</h4>
-                    <p style="color: #64748B; font-size: 0.9rem; margin-bottom: 10px;">2026-02-04</p>
-                    <p style="color: #334155; font-size: 0.95rem;">7 intelligent systems launched. The beginning of Life OS.</p>
-                </a>
-                <a href="journey/2026-02-04-transformation.html" style="display: block; background: #fff; padding: 25px; border-radius: 12px; text-decoration: none; color: inherit; border: 1px solid #e2e8f0; transition: all 0.3s;">
-                    <h4 style="color: #8B5CF6; margin-bottom: 8px;">🔄 The Transformation</h4>
-                    <p style="color: #64748B; font-size: 0.9rem; margin-bottom: 10px;">2026-02-04</p>
-                    <p style="color: #334155; font-size: 0.95rem;">How building in public transformed the development process.</p>
-                </a>
-                <a href="journey/2026-02-04-templates-published.html" style="display: block; background: #fff; padding: 25px; border-radius: 12px; text-decoration: none; color: inherit; border: 1px solid #e2e8f0; transition: all 0.3s;">
-                    <h4 style="color: #8B5CF6; margin-bottom: 8px;">📋 Templates Published</h4>
-                    <p style="color: #64748B; font-size: 0.9rem; margin-bottom: 10px;">2026-02-04</p>
-                    <p style="color: #334155; font-size: 0.95rem;">Publishing the templates that power Life OS automation.</p>
-                </a>
-                <a href="blog/ai-trends-report.html" style="display: block; background: #fff; padding: 25px; border-radius: 12px; text-decoration: none; color: inherit; border: 1px solid #e2e8f0; transition: all 0.3s;">
-                    <h4 style="color: #8B5CF6; margin-bottom: 8px;">🤖 AI Trends Report</h4>
-                    <p style="color: #64748B; font-size: 0.9rem; margin-bottom: 10px;">2026-02-05</p>
-                    <p style="color: #334155; font-size: 0.95rem;">Key trends in AI: LLMs, voice interfaces, and local models.</p>
-                </a>
+    <main class="container">
+        <!-- Stats -->
+        <section class="stats">
+            <div class="stat">
+                <h3>15+</h3>
+                <p>Genesis Agents</p>
             </div>
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="content-index.html" style="display: inline-block; padding: 14px 30px; background: #8B5CF6; color: #fff; text-decoration: none; border-radius: 10px; font-weight: 600;">📚 View All Content →</a>
+            <div class="stat">
+                <h3>99</h3>
+                <p>Super Swarm</p>
+            </div>
+            <div class="stat">
+                <h3>20</h3>
+                <p>OpenClaw Skills</p>
+            </div>
+            <div class="stat">
+                <h3>1000+</h3>
+                <p>Markdown Files</p>
             </div>
         </section>
 
-        <footer>
-            <p>Built with ❤️ by Bert and AI</p>
-            <p>Powered by <a href="#">OpenClaw</a> | <a href="#">Life OS</a></p>
-            <p style="margin-top: 20px;">2026 | The Partnership Works 🤝</p>
-        </footer>
-    </div>
+        <div class="section-divider"></div>
+
+        <!-- Latest Articles -->
+        <section>
+            <h2 class="section-title">📰 Latest Articles</h2>
+            
+            <div class="cards">
+                <article class="article-card">
+                    <div class="article-card-header">
+                        <span class="article-icon">🚀</span>
+                        <div>
+                            <div class="article-meta">
+                                <span class="tag">2026-02-04</span>
+                                <span class="tag">Genesis</span>
+                            </div>
+                            <h3>Genesis Day</h3>
+                        </div>
+                    </div>
+                    <p>7 intelligent systems launched in one night. The beginning of Life OS.</p>
+                    <a href="/journey/2026-02-04-genesis-day.html" class="card-link">Read Article →</a>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-card-header">
+                        <span class="article-icon">🔄</span>
+                        <div>
+                            <div class="article-meta">
+                                <span class="tag">2026-02-04</span>
+                                <span class="tag">Journey</span>
+                            </div>
+                            <h3>The Transformation</h3>
+                        </div>
+                    </div>
+                    <p>How building in public transformed the development process.</p>
+                    <a href="/journey/2026-02-04-transformation.html" class="card-link">Read Article →</a>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-card-header">
+                        <span class="article-icon">🤖</span>
+                        <div>
+                            <div class="article-meta">
+                                <span class="tag">2026-02-05</span>
+                                <span class="tag">AI Trends</span>
+                            </div>
+                            <h3>AI Trends Report</h3>
+                        </div>
+                    </div>
+                    <p>Key trends in AI: LLMs, voice interfaces, agents, and local models.</p>
+                    <a href="/blog/ai-trends-report.html" class="card-link">Read Report →</a>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-card-header">
+                        <span class="article-icon">🖥️</span>
+                        <div>
+                            <div class="article-meta">
+                                <span class="tag">Course</span>
+                                <span class="tag">Hardware</span>
+                            </div>
+                            <h3>Build AI Powerhouse</h3>
+                        </div>
+                    </div>
+                    <p>Self-hosted hardware that outperforms Mac Studio. Complete 4-week course.</p>
+                    <a href="/hardware-workstation/" class="card-link">Start Course →</a>
+                </article>
+            </div>
+            
+            <div class="text-center mt-2">
+                <a href="/journey/" class="btn btn-secondary">📚 View All Articles</a>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Features -->
+        <section>
+            <h2 class="section-title">🛠️ What I'm Building</h2>
+            
+            <div class="cards">
+                <div class="feature-card">
+                    <div class="feature-icon">🐝</div>
+                    <h3>Agent Swarm System</h3>
+                    <p>100+ autonomous AI agents working together on complex tasks. Research, content, development, and more.</p>
+                    <a href="/journey/" class="card-link">Learn More →</a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎙️</div>
+                    <h3>Voice Integration</h3>
+                    <p>Personal AI voice powered by ElevenLabs. Natural conversations with your AI assistant.</p>
+                    <a href="/journey/" class="card-link">Learn More →</a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Revenue Engine</h3>
+                    <p>Tracking revenue across consulting, subscriptions, and digital products. Goal: $5,000/month.</p>
+                    <a href="/journey/" class="card-link">Learn More →</a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Documentation Hub</h3>
+                    <p>Comprehensive documentation for Life OS. Templates, guides, and system architecture.</p>
+                    <a href="/journey/" class="card-link">Learn More →</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Tech Stack -->
+        <section>
+            <h2 class="section-title">⚡ Tech Stack</h2>
+            
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h4 style="color: var(--primary);">OpenClaw</h4>
+                    <p>Agent Orchestration</p>
+                </div>
+                <div class="tech-item">
+                    <h4 style="color: var(--accent);">Claude AI</h4>
+                    <p>Primary Model</p>
+                </div>
+                <div class="tech-item">
+                    <h4 style="color: var(--secondary);">MiniMax M2.1</h4>
+                    <p>Coding</p>
+                </div>
+                <div class="tech-item">
+                    <h4 style="color: #F59E0B;">Telegram</h4>
+                    <p>Communication</p>
+                </div>
+                <div class="tech-item">
+                    <h4 style="color: #5865F2;">Discord</h4>
+                    <p>Team Collab</p>
+                </div>
+                <div class="tech-item">
+                    <h4 style="color: #F38020;">Cloudflare</h4>
+                    <p>Hosting</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>👨‍💻 b3rt.dev | Life OS | Built with OpenClaw</p>
+            <p style="margin-top: var(--space-sm); font-size: 0.875rem;">
+                15+ Genesis Agents • 99 Super Swarm • 20 Skills • 1000+ Files
+            </p>
+        </div>
+    </footer>
 </body>
 </html>
