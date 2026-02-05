@@ -407,7 +407,19 @@
                 </div>
             </div>
         </section>
+        
+        <!-- Dynamic Articles Section -->
+        <div id="homepage-articles" data-category="default" data-limit="4"></div>
     </main>
+
+    <!-- Scripts -->
+    <script src="/js/articles-loader.js"></script>
+    <script>
+        // Initialize articles on homepage
+        document.addEventListener('DOMContentLoaded', function() {
+            loadArticles('homepage-articles', 'default', 4);
+        });
+    </script>
 
     <!-- Footer -->
     <footer>

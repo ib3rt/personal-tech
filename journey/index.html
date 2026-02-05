@@ -282,7 +282,18 @@
                 </article>
             </div>
         </section>
+        
+        <!-- Dynamic Articles Section -->
+        <div id="journey-articles" data-category="journey" data-limit="4"></div>
     </main>
+
+    <!-- Scripts -->
+    <script src="/js/articles-loader.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadArticles('journey-articles', 'journey', 4);
+        });
+    </script>
 
     <!-- Footer -->
     <footer>
