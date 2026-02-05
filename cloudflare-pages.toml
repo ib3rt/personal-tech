@@ -3,10 +3,5 @@ name = "b3rt-dev"
 compatibility_date = "2024-01-01"
 
 [build]
-command = ""
+command = "echo 'Static build - no build needed'"
 cwd = "."
-
-[pages]
-enabled = true
-
-# Pages functions for complex routing
