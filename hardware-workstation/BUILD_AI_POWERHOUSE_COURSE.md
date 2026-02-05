@@ -84,6 +84,98 @@ A powerful self-hosted AI workstation that rivals or beats Apple's Mac Studio an
 
 ---
 
+### 🅰️ Tier 1.5: AMD RX 9070 XT Build ($2,200-2,500)
+
+**For Bert's Setup:** AMD RX 9070 XT + 32-64GB RAM
+
+**Target:** Excellent local LLM performance with AMD hardware
+
+| Component | Choice | Price | Notes |
+|-----------|--------|-------|-------|
+| **CPU** | AMD Ryzen 7 7800X3D | $449 | Best for gaming + AI |
+| **GPU** | AMD RX 9070 XT | $599-699 | 16GB VRAM, RDNA 4 architecture |
+| **RAM** | 64GB DDR5-6000 (your setup) | Included | Crucial for large models |
+| **Storage** | 2TB NVMe SSD | $150 | WD Black SN850X |
+| **Motherboard** | ASUS ROG Strix B650-A | $229 | Good for AMD |
+| **Case** | Fractal Design Meshify 2 | $109 | Great cooling |
+| **Power** | Corsair RM850x | $129 | 850W 80+ Gold |
+| **Cooling** | Arctic Liquid Freezer II 240 | $89 | Good value AIO |
+| **TOTAL** | | **$1,654** | |
+
+**🎯 AMD-Specific Setup for Local LLMs:**
+
+```bash
+# Install ROCm (AMD's GPU computing platform)
+wget https://repo.radeon.com/rocm/apt/6.2.4/rocm-apt-6.2.4.deb
+sudo dpkg -i rocm-apt-6.2.4.deb
+sudo apt update
+sudo apt install rocm-hip-libraries
+
+# Install PyTorch with ROCm support
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.2
+
+# Install llama.cpp with AMD support
+git clone https://github.com/ggerganov/llama.cpp
+make LLAMA_HIPBLAS=1
+
+# Install vLLM with ROCm
+pip install vllm --extra-index-url https://community Packages.download.amd.com
+
+# Ollama with AMD support
+# Download from https://ollama.com (ROCm support coming)
+```
+
+**Expected Performance (ROCm Optimized):**
+
+| Model | VRAM Used | Performance | Notes |
+|-------|-----------|-------------|-------|
+| **Llama 3 8B** | 6GB | 80-100 t/s | Excellent |
+| **Llama 3 13B** | 10GB | 50-65 t/s | Great |
+| **Llama 3 70B (Q4)** | 14GB | 20-35 t/s | Good (16GB VRAM!) |
+| **Mistral 7B** | 6GB | 90-110 t/s | Excellent |
+| **Mixtral 8x7B** | 14GB | 25-40 t/s | Good performance |
+| **CodeLlama 34B** | 24GB | 15-25 t/s | Requires Q5 or lower |
+
+**💡 Tips for AMD RX 9070 XT:**
+
+1. **Use Q4_K_M quantization** - Balances quality and VRAM usage
+2. **Set context length to 4K-8K** - 16GB VRAM handles this well
+3. **Enable HIP acceleration** - Critical for llama.cpp performance
+4. **Keep drivers updated** - ROCm improves regularly
+5. **Consider Windows for now** - Better AMD GPU support in some tools
+
+**🔧 Recommended Software Stack:**
+
+| Tool | AMD Support | Notes |
+|------|-------------|-------|
+| **llama.cpp** | ✅ Excellent | Best option for AMD |
+| **vLLM** | ⚠️ Beta | Improving but limited |
+| **Ollama** | 🔄 Coming | ROCm support in development |
+| **Text Gen WebUI** | ✅ Good | Community support |
+| **PyTorch** | ✅ Good | ROCm 6.2+ support |
+| **Transformers** | ✅ Good | Works with PyTorch |
+
+**Performance Notes:**
+- RX 9070 XT has 16GB VRAM = can run 70B models at Q4_K_M
+- CUDA cards still have edge in software maturity
+- But AMD offers excellent value at $599-699
+- Performance ~70-80% of equivalent NVIDIA card for AI
+
+**⚠️ Limitations to Consider:**
+- Some AI tools only support NVIDIA (check before buying)
+- ROCm ecosystem less mature than CUDA
+- Some model libraries have bugs with AMD
+- Windows may perform better for some workloads
+
+**If you already have RX 9070 XT + 64GB RAM:**
+This is an excellent local LLM setup! You can run:
+- 70B models at Q4_K_M (14GB VRAM)
+- Excellent performance on 7B-13B models
+- Good for development and experimentation
+- Budget: ~$1,200-1,500 if you have the GPU already
+
+---
+
 ### Tier 2: Pro AI Workstation ($2,500-3,500)
 
 **Target:** Outperform Mac Studio M4 Max
