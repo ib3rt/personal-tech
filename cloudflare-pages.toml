@@ -1,60 +1,12 @@
 # Cloudflare Pages Configuration
-# GitHub → Cloudflare Pages Deployment
-
 name = "b3rt-dev"
 compatibility_date = "2024-01-01"
 
 [build]
-command = ""  # Static site, no build needed
+command = ""
 cwd = "."
 
 [pages]
-# Enable Pages
 enabled = true
 
-# Routing rules for proper URL handling
-[[redirects]]
-  from = "/journey/*.html"
-  to = "/journey/:splat"
-  status = 200
-
-[[redirects]]
-  from = "/*.html"
-  to = "/:splat"
-  status = 200
-
-[[redirects]]
-  from = "/blog/*"
-  to = "/blog/:splat"
-  status = 200
-
-# Clean URLs - remove .html extension
-[[redirects]]
-  from = "/*"
-  to = "/:splat.html"
-  status = 200
-  condition = { if = "{URI}" matches="\\.html$" }
-
-# SPA fallback for root
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  condition = { if = "{URI}" matches = "^/?$" }
-
-[headers]
-# Cache static assets
-[[headers]]
-  for = "/static/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# Security headers
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Content-Type-Options = "nosniff"
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.vercel.com https://api.github.com;"
+# Pages functions for complex routing
