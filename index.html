@@ -3,232 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T3ch.b3rt.dev | Your AI Ecosystem Hub</title>
+    <title>b3rt | Systems, Automation & Life OS</title>
+    <meta name="description" content="Building systems, automating life, and sharing the journey. Tech, productivity, and entrepreneurship.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #8B5CF6;
+            --primary-dark: #7C3AED;
+            --accent: #10B981;
+            --neutral: #64748B;
+            --dark: #0F172A;
+            --light: #F8FAFC;
+            --code: #1E293B;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 100%);
-            color: #fff;
-            min-height: 100vh;
-            padding: 40px 20px;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--light);
         }
+        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
+            padding: 0 20px;
         }
+        /* Header */
         header {
+            padding: 40px 0;
             text-align: center;
-            margin-bottom: 60px;
         }
-        h1 {
-            font-size: 4rem;
-            background: linear-gradient(90deg, #00d4ff, #7b2ff7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
         }
-        .tagline {
-            font-size: 1.5rem;
-            color: #888;
+        /* Hero */
+        .hero {
+            padding: 60px 0;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        .hero h1 span { color: var(--primary); }
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--neutral);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        /* Terminal */
+        .terminal {
+            background: var(--code);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 40px 0;
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        .terminal-header {
+            display: flex;
+            gap: 8px;
             margin-bottom: 20px;
         }
-        .tag {
-            background: linear-gradient(90deg, #00d4ff, #7b2ff7);
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            display: inline-block;
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
         }
-        .grid {
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+        .terminal-content {
+            color: #fff;
+            font-size: 1rem;
+            line-height: 2;
+        }
+        .terminal-content .command {
+            color: #10B981;
+            margin-bottom: 5px;
+        }
+        .terminal-content .output {
+            color: #94a3b8;
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        .terminal-content .output a {
+            color: #8B5CF6;
+            text-decoration: none;
+        }
+        .terminal-content .output a:hover {
+            text-decoration: underline;
+        }
+        /* Cards */
+        .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            margin-bottom: 60px;
+            margin: 60px 0;
         }
         .card {
-            background: rgba(255,255,255,0.05);
-            border-radius: 20px;
+            background: #fff;
+            border-radius: 16px;
             padding: 30px;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid #e2e8f0;
             transition: all 0.3s;
         }
         .card:hover {
             transform: translateY(-5px);
-            border-color: #00d4ff;
-            box-shadow: 0 20px 40px rgba(0,212,255,0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: var(--primary);
         }
         .card-icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
         }
-        .card h2 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #00d4ff;
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
         }
         .card p {
-            color: #aaa;
+            color: var(--neutral);
             margin-bottom: 20px;
-            line-height: 1.6;
         }
         .card a {
-            color: #00d4ff;
+            color: var(--primary);
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 500;
         }
         .card a:hover {
             text-decoration: underline;
         }
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .tool {
-            background: rgba(0,212,255,0.1);
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            color: #00d4ff;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        .tool:hover {
-            background: rgba(0,212,255,0.2);
-        }
-        .stats {
+        /* Links */
+        .links {
             display: flex;
             justify-content: center;
-            gap: 60px;
-            margin: 60px 0;
+            gap: 30px;
+            margin: 40px 0;
             flex-wrap: wrap;
         }
-        .stat {
-            text-align: center;
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 30px;
+            background: var(--primary);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: all 0.3s;
         }
-        .stat-number {
-            font-size: 3rem;
-            font-weight: bold;
-            background: linear-gradient(90deg, #00d4ff, #7b2ff7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .link-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
         }
-        .stat-label {
-            color: #888;
-            margin-top: 5px;
-        }
+        /* Footer */
         footer {
             text-align: center;
-            color: #666;
+            padding: 60px 0;
+            color: var(--neutral);
+            border-top: 1px solid #e2e8f0;
             margin-top: 60px;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
         }
         footer a {
-            color: #00d4ff;
+            color: var(--primary);
             text-decoration: none;
         }
+        footer a:hover {
+            text-decoration: underline;
+        }
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .grid { grid-template-columns: 1fr; }
-            .stats { gap: 30px; }
+            .hero h1 { font-size: 2.5rem; }
+            .terminal { padding: 20px; }
+            .terminal-content { font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🚀 T3ch.b3rt.dev</h1>
-            <p class="tagline">Your AI Ecosystem Hub</p>
-            <span class="tag">🤖 Powered by Life OS</span>
+            <a href="#" class="logo">b3rt</a>
         </header>
 
-        <div class="stats">
-            <div class="stat">
-                <div class="stat-number">16</div>
-                <div class="stat-label">AI Agents</div>
+        <section class="hero">
+            <h1>Systems, Automation & <span>Life OS</span></h1>
+            <p>Building systems, automating life, and sharing the journey. Tech, productivity, and entrepreneurship.</p>
+        </section>
+
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="terminal-dot dot-red"></div>
+                <div class="terminal-dot dot-yellow"></div>
+                <div class="terminal-dot dot-green"></div>
             </div>
-            <div class="stat">
-                <div class="stat-number">7</div>
-                <div class="stat-label">Core Systems</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">99</div>
-                <div class="stat-label">Super Swarm</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">5</div>
-                <div class="stat-label">Live Sites</div>
+            <div class="terminal-content">
+                <div class="command">$ whoami</div>
+                <div class="output">→ Entrepreneur building AI-powered businesses</div>
+                
+                <div class="command">$ ps aux | grep active_projects</div>
+                <div class="output">→ <a href="https://sparklingsolutions.biz">Sparkling Solutions</a> (Airbnb cleaning)</div>
+                <div class="output">→ <a href="https://be-repaired.b3rt.dev">BE Repaired</a> (Handyman services)</div>
+                <div class="output">→ <a href="https://b3prompt.com">B3Prompt</a> (AI Prompt Course)</div>
+                <div class="output">→ <a href="https://t3ch.b3rt.dev">Life OS</a> (AI assistant)</div>
+                
+                <div class="command">$ cat location.txt</div>
+                <div class="output">→ Building remotely, living intentionally</div>
+                
+                <div class="command">$ uptime</div>
+                <div class="output">→ Always optimizing ⚡</div>
             </div>
         </div>
 
-        <div class="grid">
-            <div class="card">
-                <div class="card-icon">📚</div>
-                <h2>AI Prompt Course</h2>
-                <p>Master the art of AI prompting with our comprehensive course. Learn techniques used by top AI practitioners.</p>
-                <a href="https://b3prompt.com">🚀 Go to Course →</a>
-            </div>
-            
+        <div class="links">
+            <a href="https://b3prompt.com" class="link-btn">📚 AI Prompt Course</a>
+            <a href="https://sparklingsolutions.biz" class="link-btn">✨ Sparkling Solutions</a>
+            <a href="https://be-repaired.b3rt.dev" class="link-btn">🛠️ BE Repaired</a>
+            <a href="https://github.com/ib3rt" class="link-btn">💻 GitHub</a>
+        </div>
+
+        <div class="cards">
             <div class="card">
                 <div class="card-icon">🤖</div>
-                <h2>AI Agents</h2>
-                <p>Meet your 16 specialized Genesis agents. Each designed for specific tasks and workflows.</p>
-                <a href="https://agents.b3rt.dev">🤖 View All Agents →</a>
+                <h3>16 AI Agents</h3>
+                <p>Specialized Genesis agents for finance, marketing, operations, and more.</p>
+                <a href="#">View Agents →</a>
             </div>
             
             <div class="card">
                 <div class="card-icon">🛠️</div>
-                <h2>AI Tools</h2>
-                <p>Powerful tools for content, strategy, analysis, and automation. Built by agents, for agents.</p>
-                <a href="https://tools.b3rt.dev">🛠️ Explore Tools →</a>
+                <h3>AI Tools</h3>
+                <p>Content pipeline, market intelligence, quality scoring, and more.</p>
+                <a href="#">Explore Tools →</a>
             </div>
             
             <div class="card">
-                <div class="card-icon">📊</div>
-                <h2>Market Intelligence</h2>
-                <p>Proactive monitoring of competitors, trends, and opportunities. Stay ahead of the curve.</p>
-                <a href="https://market.b3rt.dev">📊 View Insights →</a>
+                <div class="card-icon">🚀</div>
+                <h3>Super Swarm</h3>
+                <p>99 agents working together on complex tasks autonomously.</p>
+                <a href="#">Learn More →</a>
             </div>
             
             <div class="card">
                 <div class="card-icon">🎙️</div>
-                <h2>Voice AI</h2>
-                <p>Your personal AI voice. Text-to-speech, announcements, and audio content creation.</p>
-                <a href="https://voice.b3rt.dev">🎙️ Try Voice AI →</a>
-            </div>
-            
-            <div class="card">
-                <div class="card-icon">📈</div>
-                <h2>Quality System</h2>
-                <p>Self-improving agents that learn from experience. Continuous optimization and refinement.</p>
-                <a href="https://quality.b3rt.dev">📈 View Quality →</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-icon">🔗</div>
-            <h2>Quick Access Tools</h2>
-            <div class="tools-grid">
-                <a href="#" class="tool">🐝 Swarm Task</a>
-                <a href="#" class="tool">📝 Content Pipeline</a>
-                <a href="#" class="tool">📊 Market Scan</a>
-                <a href="#" class="tool">🧠 Agent Review</a>
-                <a href="#" class="tool">✅ Quality Check</a>
-                <a href="#" class="tool">📚 Docs Update</a>
-                <a href="#" class="tool">🎙️ Speak</a>
-                <a href="#" class="tool">📖 Documentation</a>
+                <h3>Voice AI</h3>
+                <p>Personal AI voice for announcements, content, and more.</p>
+                <a href="#">Try Voice →</a>
             </div>
         </div>
 
         <footer>
             <p>Built with ❤️ by Bert and AI</p>
             <p>Powered by <a href="#">OpenClaw</a> | <a href="#">Life OS</a></p>
-            <p style="margin-top: 20px; font-size: 0.9rem;">2026 | The Partnership Works</p>
+            <p style="margin-top: 20px;">2026 | The Partnership Works 🤝</p>
         </footer>
     </div>
 </body>
 </html>
-<!-- Updated: Wed Feb  4 23:28:41 EST 2026 -->
