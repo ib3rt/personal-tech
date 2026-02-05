@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 OpenClaw Guide | Complete Documentation</title>
+    <meta name="description" content="Master OpenClaw with this comprehensive guide. Learn to build, deploy, and scale AI agents.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.8;
+            color: #1a1a2e;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        
+        /* Header */
+        header {
+            text-align: center;
+            padding: 60px 0;
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            border-radius: 30px;
+            margin-bottom: 60px;
+            color: #fff;
+        }
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        .tagline { font-size: 1.3rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+        
+        /* Sections */
+        .section {
+            background: #fff;
+            border-radius: 24px;
+            padding: 50px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+        .section-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #fa709a, #fee140);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #1a1a2e;
+        }
+        h3 {
+            font-size: 1.5rem;
+            margin: 30px 0 15px;
+            color: #fa709a;
+        }
+        h4 { font-size: 1.2rem; margin: 20px 0 10px; color: #4a4a6a; }
+        p { margin-bottom: 20px; color: #4a4a6a; }
+        
+        /* Code Blocks */
+        .code-block {
+            background: #1a1a2e;
+            color: #e9ecef;
+            padding: 25px;
+            border-radius: 16px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 0.9rem;
+        }
+        .code-block .comment { color: #6c757d; }
+        .code-block .keyword { color: #fa709a; }
+        .code-block .string { color: #fee140; }
+        .code-block .variable { color: #4facfe; }
+        
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .feature {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.3s;
+        }
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(250,112,154,0.2);
+        }
+        .feature-icon { font-size: 2.5rem; margin-bottom: 15px; }
+        .feature-name { font-weight: bold; margin-bottom: 10px; }
+        .feature-desc { font-size: 0.9rem; color: #6c757d; }
+        
+        /* Quick Start */
+        .quick-start {
+            background: linear-gradient(135deg, rgba(250,112,154,0.1), rgba(254,225,64,0.1));
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            border-left: 5px solid #fa709a;
+        }
+        
+        /* Command List */
+        .command-list {
+            list-style: none;
+            padding: 0;
+        }
+        .command-list li {
+            padding: 15px 20px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-family: 'SF Mono', Monaco, monospace;
+        }
+        .command-list .cmd { color: #fa709a; font-weight: bold; }
+        .command-list .desc { color: #6c757d; font-family: 'Inter', sans-serif; }
+        
+        /* Architecture Diagram */
+        .architecture {
+            background: linear-gradient(135deg, #1a1a2e, #2d2d5a);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            color: #fff;
+            text-align: center;
+        }
+        .arch-diagram {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .arch-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 25px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .arch-item.highlight {
+            border-color: #fa709a;
+            background: rgba(250,112,154,0.2);
+        }
+        .arch-arrow {
+            font-size: 2rem;
+            color: #fa709a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+        .nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 30px;
+            background: #fff;
+            color: #fa709a;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(250,112,154,0.2);
+            transition: all 0.3s;
+        }
+        .nav a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(250,112,154,0.3);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            color: #6c757d;
+            border-top: 1px solid #e9ecef;
+            margin-top: 60px;
+        }
+        footer a { color: #fa709a; text-decoration: none; }
+        
+        /* Table of Contents */
+        .toc {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        .toc h3 { margin-top: 0; }
+        .toc a {
+            display: block;
+            padding: 10px 0;
+            color: #4a4a6a;
+            text-decoration: none;
+            border-bottom: 1px solid #e9ecef;
+            transition: all 0.3s;
+        }
+        .toc a:hover { color: #fa709a; padding-left: 10px; }
+        .toc a:last-child { border-bottom: none; }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .section { padding: 30px; }
+            .arch-diagram { grid-template-columns: 1fr; }
+            .arch-arrow { transform: rotate(90deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <a href="/templates/">📚 All Templates</a>
+            <a href="/templates/soul.html">🤖 SOUL</a>
+            <a href="/templates/personality.html">💫 PERSONALITY</a>
+            <a href="/templates/memory.html">🧠 MEMORY</a>
+            <a href="/">🏠 Home</a>
+        </nav>
+
+        <header>
+            <h1>🤖 OpenClaw Guide</h1>
+            <p class="tagline">Master OpenClaw with this comprehensive guide. Build, deploy, and scale AI agents that work together autonomously.</p>
+        </header>
+
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h3>📑 Table of Contents</h3>
+            <a href="#quick-start">🚀 Quick Start</a>
+            <a href="#what-is-openclaw">🤔 What is OpenClaw?</a>
+            <a href="#architecture">🏗️ Architecture</a>
+            <a href="#core-concepts">💡 Core Concepts</a>
+            <a href="#agents">🤖 Creating Agents</a>
+            <a href="#skills">🛠️ Using Skills</a>
+            <a href="#messaging">💬 Messaging</a>
+            <a href="#automation">⚡ Automation</a>
+            <a href="#commands">📝 Command Reference</a>
+            <a href="#best-practices">✨ Best Practices</a>
+        </div>
+
+        <!-- Quick Start -->
+        <div class="section" id="quick-start">
+            <span class="section-number">🚀</span>
+            <h2>Quick Start</h2>
+            
+            <div class="quick-start">
+                <h3>Install & Run in 5 Minutes</h3>
+                
+                <div class="code-block">
+<span class="comment"># 1. Install OpenClaw</span>
+$ npm install -g openclaw
+
+<span class="comment"># 2. Initialize your workspace</span>
+$ openclaw init my-life-os
+$ cd my-life-os
+
+<span class="comment"># 3. Start the gateway</span>
+$ openclaw gateway start
+
+<span class="comment"># 4. Open dashboard</span>
+$ openclaw dashboard
+                </div>
+                
+                <p>Open http://localhost:3000 to access your Life OS dashboard!</p>
+            </div>
+        </div>
+
+        <!-- What is OpenClaw -->
+        <div class="section" id="what-is-openclaw">
+            <span class="section-number">🤔</span>
+            <h2>What is OpenClaw?</h2>
+            <p>OpenClaw is an AI-powered personal operating system that orchestrates multiple AI agents to work together autonomously.</p>
+            
+            <div class="feature-grid">
+                <div class="feature">
+                    <div class="feature-icon">🤖</div>
+                    <div class="feature-name">Multi-Agent Orchestration</div>
+                    <div class="feature-desc">Run 16+ specialized agents simultaneously</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💬</div>
+                    <div class="feature-name">Omnichannel Messaging</div>
+                    <div class="feature-desc">Telegram, Discord, Signal, WhatsApp, and more</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-name">Automation</div>
+                    <div class="feature-desc">Cron jobs, triggers, and workflows</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔧</div>
+                    <div class="feature-name">Skills System</div>
+                    <div class="feature-desc">Extensible capabilities via skill modules</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🌐</div>
+                    <div class="feature-name">Web Integration</div>
+                    <div class="feature-desc">Browser control, scraping, and automation</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎙️</div>
+                    <div class="feature-name">Voice</div>
+                    <div class="feature-desc">Text-to-speech and audio processing</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Architecture -->
+        <div class="section" id="architecture">
+            <span class="section-number">🏗️</span>
+            <h2>Architecture</h2>
+            
+            <div class="architecture">
+                <h3 style="color: #fff;">OpenClaw System Architecture</h3>
+                
+                <div class="arch-diagram">
+                    <div class="arch-item">
+                        <strong>📱 Channels</strong><br>
+                        <small>Telegram, Discord, etc.</small>
+                    </div>
+                    <div class="arch-arrow">→</div>
+                    <div class="arch-item highlight">
+                        <strong>🎯 Gateway</strong><br>
+                        <small>Message routing & orchestration</small>
+                    </div>
+                    <div class="arch-arrow">→</div>
+                    <div class="arch-item">
+                        <strong>🤖 Agents</strong><br>
+                        <small>16+ specialized agents</small>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <div class="arch-item" style="display: inline-block; margin: 10px;">
+                        <strong>💾 Memory</strong><br>
+                        <small>Long-term & working memory</small>
+                    </div>
+                    <div class="arch-item" style="display: inline-block; margin: 10px;">
+                        <strong>🛠️ Skills</strong><br>
+                        <small>Extensible capabilities</small>
+                    </div>
+                    <div class="arch-item" style="display: inline-block; margin: 10px;">
+                        <strong>⚡ Automation</strong><br>
+                        <small>Crons, triggers, workflows</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Core Concepts -->
+        <div class="section" id="core-concepts">
+            <span class="section-number">💡</span>
+            <h2>Core Concepts</h2>
+            
+            <h3>🎯 Gateway</h3>
+            <p>The central router that handles all messaging and agent orchestration.</p>
+            
+            <h3>🤖 Agents</h3>
+            <p>Specialized AI workers with distinct personalities, purposes, and capabilities.</p>
+            
+            <h3>💬 Channels</h3>
+            <p>Communication interfaces (Telegram, Discord, Signal, WhatsApp, etc.)</p>
+            
+            <h3>🛠️ Skills</h3>
+            <p>Extensible modules that add capabilities to agents (weather, web search, GitHub, etc.)</p>
+            
+            <h3>📁 Workspace</h3>
+            <p>The local folder where all agent configurations, memories, and tools are stored.</p>
+            
+            <h3>🧠 Memory</h3>
+            <p>Persistent storage for agent knowledge, preferences, and learned lessons.</p>
+        </div>
+
+        <!-- Creating Agents -->
+        <div class="section" id="agents">
+            <span class="section-number">🤖</span>
+            <h2>Creating Agents</h2>
+            <p>Agents are defined by SOUL templates (Section, Objectives, Values, Boundaries, Learning).</p>
+            
+            <h3>Agent Structure</h3>
+            <div class="code-block">
+<span class="comment"># /agents/agent-name/</span>
+├── README.md          <span class="comment"># Agent documentation</span>
+├── SOUL.md           <span class="comment"># Agent definition</span>
+├── skills/           <span class="comment"># Agent-specific skills</span>
+├── memory/           <span class="comment"># Agent memory storage</span>
+└── tools/            <span class="comment"># Agent-specific tools</span>
+            </div>
+            
+            <h3>Create a New Agent</h3>
+            <div class="code-block">
+<span class="comment"># Generate agent from template</span>
+$ openclaw agent create my-agent
+
+<span class="comment"># Or manually create directory</span>
+$ mkdir -p /agents/my-agent
+$ cd /agents/my-agent
+$ touch SOUL.md README.md
+            </div>
+            
+            <h3>Agent SOUL Template</h3>
+            <p>Every agent needs a SOUL.md file defining their identity:</p>
+            <div class="code-block">
+<span class="comment"># agents/my-agent/SOUL.md</span>
+<span class="keyword">NAME:</span> <span class="string">"My Agent"</span>
+<span class="keyword">OBJECTIVES:</span> <span class="string">"What I accomplish"</span>
+<span class="keyword">VALUES:</span> <span class="string">"What matters to me"</span>
+<span class="keyword">BOUNDARIES:</span> <span class="string">"What I won't do"</span>
+<span class="keyword">LEARNING:</span> <span class="string">"How I improve"</span>
+            </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="section" id="skills">
+            <span class="section-number">🛠️</span>
+            <h2>Using Skills</h2>
+            <p>Skills provide additional capabilities to agents (weather, web search, GitHub, etc.)</p>
+            
+            <h3>Available Skills</h3>
+            <div class="feature-grid">
+                <div class="feature">
+                    <div class="feature-icon">🌤️</div>
+                    <div class="feature-name">Weather</div>
+                    <div class="feature-desc">Current conditions and forecasts</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔍</div>
+                    <div class="feature-name">Web Search</div>
+                    <div class="feature-desc">Brave and Google search integration</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💻</div>
+                    <div class="feature-name">GitHub</div>
+                    <div class="feature-desc">Issues, PRs, and repo management</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🌐</div>
+                    <div class="feature-name">Web Fetch</div>
+                    <div class="feature-desc">Page content extraction</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-name">Browser</div>
+                    <div class="feature-desc">Web browser automation</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎙️</div>
+                    <div class="feature-name">TTS</div>
+                    <div class="feature-desc">Text-to-speech conversion</div>
+                </div>
+            </div>
+            
+            <h3>Install a Skill</h3>
+            <div class="code-block">
+<span class="comment"># Install skill globally</span>
+$ openclaw skill install github
+
+<span class="comment"># Install to specific agent</span>
+$ openclaw skill install github --agent my-agent
+            </div>
+        </div>
+
+        <!-- Messaging -->
+        <div class="section" id="messaging">
+            <span class="section-number">💬</span>
+            <h2>Messaging</h2>
+            <p>OpenClaw supports multiple messaging platforms simultaneously.</p>
+            
+            <h3>Supported Channels</h3>
+            <ul>
+                <li>📱 Telegram</li>
+                <li>💬 Discord</li>
+                <li>📲 WhatsApp</li>
+                <li>✉️ Signal</li>
+                <li>💌 Email</li>
+            </ul>
+            
+            <h3>Configure Channels</h3 class="code-block">
+<span class="comment"># ~/.>
+            <divopenclaw/openclaw.json</span>
+{
+  <span class="string">"channels"</span>: {
+    <span class="string">"telegram"</span>: {
+      <span class="string">"token"</span>: <span class="string">"your-telegram-bot-token"</span>
+    },
+    <span class="string">"discord"</span>: {
+      <span class="string">"token"</span>: <span class="string">"your-discord-bot-token"</span>
+    }
+  }
+}
+            </div>
+        </div>
+
+        <!-- Automation -->
+        <div class="section" id="automation">
+            <span class="section-number">⚡</span>
+            <h2>Automation</h2>
+            <p>Automate tasks with cron jobs, triggers, and agent workflows.</p>
+            
+            <h3>Cron Jobs</h3>
+            <div class="code-block">
+<span class="comment"># Schedule agent tasks</span>
+$ openclaw cron add --agent the_butler --schedule "0 8 * * *" \
+  --payload "Morning brief"
+            </div>
+            
+            <h3>Agent Swarms</h3>
+            <p>Coordinate multiple agents on complex tasks:</p>
+            <div class="code-block">
+<span class="comment"># Run research team</span>
+$ ./tools/swarm-task.sh "Research AI agents" --team research
+
+<span class="comment"># Run content team</span>
+$ ./tools/swarm-task.sh "Write blog post" --team content --priority high
+            </div>
+        </div>
+
+        <!-- Command Reference -->
+        <div class="section" id="commands">
+            <span class="section-number">📝</span>
+            <h2>Command Reference</h2>
+            
+            <h3>Gateway Commands</h3>
+            <ul class="command-list">
+                <li><span class="cmd">openclaw gateway start</span> <span class="desc">Start the gateway service</span></li>
+                <li><span class="cmd">openclaw gateway stop</span> <span class="desc">Stop the gateway service</span></li>
+                <li><span class="cmd">openclaw gateway restart</span> <span class="desc">Restart the gateway</span></li>
+                <li><span class="cmd">openclaw status</span> <span class="desc">Show gateway status</span></li>
+            </ul>
+            
+            <h3>Agent Commands</h3>
+            <ul class="command-list">
+                <li><span class="cmd">openclaw agent list</span> <span class="desc">List all agents</span></li>
+                <li><span class="cmd">openclaw agent create [name]</span> <span class="desc">Create new agent</span></li>
+                <li><span class="cmd">openclaw agent delete [name]</span> <span class="desc">Remove an agent</span></li>
+                <li><span class="cmd">openclaw agent status [name]</span> <span class="desc">Check agent status</span></li>
+            </ul>
+            
+            <h3>Skill Commands</h3>
+            <ul class="command-list">
+                <li><span class="cmd">openclaw skill list</span> <span class="desc">List installed skills</span></li>
+                <li><span class="cmd">openclaw skill install [name]</span> <span class="desc">Install a skill</span></li>
+                <li><span class="cmd">openclaw skill remove [name]</span> <span class="desc">Remove a skill</span></li>
+            </ul>
+        </div>
+
+        <!-- Best Practices -->
+        <div class="section" id="best-practices">
+            <span class="section-number">✨</span>
+            <h2>Best Practices</h2>
+            
+            <h3>1. Agent Design</h3>
+            <ul>
+                <li>Give each agent a clear, single purpose</li>
+                <li>Define SOUL before building capabilities</li>
+                <li>Start simple, add complexity gradually</li>
+            </ul>
+            
+            <h3>2. Memory Management</h3>
+            <ul>
+                <li>Use SOUL → PERSONALITY → MEMORY template chain</li>
+                <li>Store user preferences in memory</li>
+                <li>Archive low-value memories periodically</li>
+            </ul>
+            
+            <h3>3. Agent Communication</h3>
+            <ul>
+                <li>Use agent-to-agent announcements</li>
+                <li>Define clear handoff protocols</li>
+                <li>Log all inter-agent communications</li>
+            </ul>
+            
+            <h3>4. Testing</h3>
+            <ul>
+                <li>Test agents in isolation first</li>
+                <li>Use quality scoring before deployment</li>
+                <li>Monitor agent performance continuously</li>
+            </ul>
+        </div>
+
+        <!-- Resources -->
+        <div class="section">
+            <span class="section-number">📚</span>
+            <h2>Resources</h2>
+            
+            <div class="feature-grid">
+                <a href="/templates/soul.html" class="feature" style="text-decoration: none; color: inherit;">
+                    <div class="feature-icon">🤖</div>
+                    <div class="feature-name">SOUL Template</div>
+                    <div class="feature-desc">Create agent identities</div>
+                </a>
+                <a href="/templates/personality.html" class="feature" style="text-decoration: none; color: inherit;">
+                    <div class="feature-icon">💫</div>
+                    <div class="feature-name">PERSONALITY Template</div>
+                    <div class="feature-desc">Design agent characters</div>
+                </a>
+                <a href="/templates/memory.html" class="feature" style="text-decoration: none; color: inherit;">
+                    <div class="feature-icon">🧠</div>
+                    <div class="feature-name">MEMORY Template</div>
+                    <div class="feature-desc">Build persistent memory</div>
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            <p>Part of the <a href="/">Life OS</a> ecosystem</p>
+            <p>OpenClaw Docs | Version 1.0</p>
+            <p>The Partnership Works 🤝</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Templates | b3prompt.com</title>
+    <meta name="description" content="World-class templates for building AI agents. SOUL, PERSONALITY, MEMORY, and more.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.8;
+            color: #1a1a2e;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        
+        /* Header */
+        header {
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 30px;
+            margin-bottom: 60px;
+            color: #fff;
+        }
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        .tagline { font-size: 1.5rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+        
+        /* Template Grid */
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .template-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .template-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(102,126,234,0.2);
+        }
+        .template-icon { font-size: 4rem; margin-bottom: 20px; }
+        .template-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #1a1a2e;
+        }
+        .template-desc {
+            color: #6c757d;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        .template-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        .template-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Featured Section */
+        .featured {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 24px;
+            padding: 50px;
+            margin-bottom: 60px;
+            color: #fff;
+        }
+        .featured h2 { color: #fff; margin-bottom: 20px; }
+        .featured p { opacity: 0.9; margin-bottom: 30px; }
+        .featured-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 30px;
+            background: #fff;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+        
+        /* Quick Links */
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+        .quick-link {
+            background: #fff;
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s;
+        }
+        .quick-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .quick-link-icon { font-size: 2rem; margin-bottom: 10px; }
+        .quick-link-text { font-weight: 500; }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            color: #6c757d;
+            border-top: 1px solid #e9ecef;
+        }
+        footer a { color: #667eea; text-decoration: none; }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .template-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Templates</h1>
+            <p class="tagline">World-class templates for building AI agents that feel alive. SOUL, PERSONALITY, MEMORY, and more.</p>
+        </header>
+
+        <!-- Featured -->
+        <div class="featured">
+            <h2>🎯 Start Here: The Agent Creation Trilogy</h2>
+            <p>Three essential templates for creating agents with depth, personality, and memory. Download, customize, and build.</p>
+            <a href="soul.html" class="featured-link">Start with SOUL →</a>
+        </div>
+
+        <!-- Template Grid -->
+        <div class="template-grid">
+            <a href="soul.html" class="template-card">
+                <div class="template-icon">🤖</div>
+                <div class="template-title">SOUL Template</div>
+                <div class="template-desc">The ultimate framework for building agents with personality, purpose, and presence. Define identity, values, behavior, and growth.</div>
+                <div class="template-meta">
+                    <span>📄 16KB</span>
+                    <span>⏱️ 15 min read</span>
+                    <span>🎯 Essential</span>
+                </div>
+            </a>
+            
+            <a href="personality.html" class="template-card">
+                <div class="template-icon">💫</div>
+                <div class="template-title">PERSONALITY Template</div>
+                <div class="template-desc">Design AI agent personalities that feel real. Archetypes, voice calibration, traits, and dialogue examples.</div>
+                <div class="template-meta">
+                    <span>📄 22KB</span>
+                    <span>⏱️ 20 min read</span>
+                    <span>🎨 Interactive</span>
+                </div>
+            </a>
+            
+            <a href="memory.html" class="template-card">
+                <div class="template-icon">🧠</div>
+                <div class="template-title">MEMORY Template</div>
+                <div class="template-desc">Build persistent, contextual, intelligent memory for AI agents. Long-term, episodic, preference, and working memory.</div>
+                <div class="template-meta">
+                    <span>📄 19KB</span>
+                    <span>⏱️ 18 min read</span>
+                    <span>🔄 Essential</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Quick Links -->
+        <h2 style="margin-bottom: 30px; text-align: center;">🔗 Related Resources</h2>
+        <div class="quick-links">
+            <a href="../openclaw-guide/" class="quick-link">
+                <div class="quick-link-icon">🤖</div>
+                <div class="quick-link-text">OpenClaw Guide</div>
+            </a>
+            <a href="../" class="quick-link">
+                <div class="quick-link-icon">🏠</div>
+                <div class="quick-link-text">b3prompt Home</div>
+            </a>
+            <a href="../journey/" class="quick-link">
+                <div class="quick-link-icon">📖</div>
+                <div class="quick-link-text">Building Journey</div>
+            </a>
+            <a href="../metrics.html" class="quick-link">
+                <div class="quick-link-icon">📊</div>
+                <div class="quick-link-text">Metrics Dashboard</div>
+            </a>
+        </div>
+
+        <footer>
+            <p>Part of the <a href="/">Life OS</a> ecosystem</p>
+            <p>The Partnership Works 🤝</p>
+        </footer>
+    </div>
+</body>
+</html>
