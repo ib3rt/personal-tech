@@ -1,0 +1,65 @@
+name = "b3rt-dev"
+compatibility_date = "2024-01-01"
+
+[build]
+command = ""
+
+[[redirects]]
+  from = "/journey/2026-02-04-genesis-day"
+  to = "/journey/2026-02-04-genesis-day.html"
+  status = 200
+
+[[redirects]]
+  from = "/journey/2026-02-04-transformation"
+  to = "/journey/2026-02-04-transformation.html"
+  status = 200
+
+[[redirects]]
+  from = "/journey/2026-02-04-templates-published"
+  to = "/journey/2026-02-04-templates-published.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog/ai-trends-report"
+  to = "/blog/ai-trends-report.html"
+  status = 200
+
+[[redirects]]
+  from = "/templates/soul"
+  to = "/templates/soul.html"
+  status = 200
+
+[[redirects]]
+  from = "/templates/memory"
+  to = "/templates/memory.html"
+  status = 200
+
+[[redirects]]
+  from = "/templates/personality"
+  to = "/templates/personality.html"
+  status = 200
+
+[[redirects]]
+  from = "/hardware-workstation"
+  to = "/hardware-workstation/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/content-index"
+  to = "/content-index.html"
+  status = 200
+
+[[redirects]]
+  from = "/journey"
+  to = "/journey/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog"
+  to = "/blog/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/templates"
+  to = "/templates/index.html"
+  status = 200
