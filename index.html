@@ -3,373 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🚀 b3prompt.com - Master AI Prompting</title>
+    <title>T3ch.b3rt.dev | Your AI Ecosystem Hub</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
-            background: #0a0a0f; 
-            color: #fff; 
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 100%);
+            color: #fff;
             min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        h1 {
+            font-size: 4rem;
+            background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        .tagline {
+            font-size: 1.5rem;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        .tag {
+            background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #00d4ff;
+            box-shadow: 0 20px 40px rgba(0,212,255,0.2);
+        }
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #00d4ff;
+        }
+        .card p {
+            color: #aaa;
+            margin-bottom: 20px;
             line-height: 1.6;
         }
-        .hero { 
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 100px 40px;
+        .card a {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .card a:hover {
+            text-decoration: underline;
+        }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .tool {
+            background: rgba(0,212,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            color: #00d4ff;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .tool:hover {
+            background: rgba(0,212,255,0.2);
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin: 60px 0;
+            flex-wrap: wrap;
+        }
+        .stat {
             text-align: center;
         }
-        .hero h1 { font-size: 72px; margin-bottom: 20px; }
-        .hero p { font-size: 24px; opacity: 0.95; max-width: 700px; margin: 0 auto 40px; }
-        .cta { 
-            display: inline-block; padding: 18px 48px; 
-            background: #fff; color: #667eea;
-            border-radius: 12px; text-decoration: none; font-weight: 700;
-            font-size: 20px;
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .section { padding: 80px 40px; max-width: 1200px; margin: 0 auto; }
-        .section h2 { font-size: 48px; margin-bottom: 40px; text-align: center; }
-        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .feature { 
-            background: #1a1a25; padding: 40px; border-radius: 20px; 
-            border: 1px solid #333; transition: all 0.3s;
+        .stat-label {
+            color: #888;
+            margin-top: 5px;
         }
-        .feature:hover { border-color: #667eea; transform: translateY(-5px); }
-        .feature h3 { font-size: 24px; margin-bottom: 15px; color: #667eea; }
-        .feature p { color: #888; font-size: 16px; }
-        .modules { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .module { 
-            background: #1a1a25; padding: 30px; border-radius: 16px; 
-            border: 1px solid #333; text-align: center;
+        footer {
+            text-align: center;
+            color: #666;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
-        .module:hover { border-color: #667eea; transform: translateY(-3px); }
-        .module .num { 
-            width: 50px; height: 50px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 20px; font-weight: 700; margin: 0 auto 20px;
+        footer a {
+            color: #00d4ff;
+            text-decoration: none;
         }
-        .module h3 { font-size: 20px; margin-bottom: 10px; }
-        .module p { font-size: 14px; color: #888; }
-        .templates { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
-        .template { 
-            background: #12121a; padding: 30px; border-radius: 16px; 
-            border: 1px solid #333;
-        }
-        .template h3 { font-size: 20px; margin-bottom: 15px; }
-        .template code { 
-            background: #1a1a25; padding: 15px; border-radius: 8px; 
-            display: block; font-size: 13px; color: #aaa; margin-bottom: 15px;
-            overflow-x: auto;
-        }
-        .template .tag { 
-            display: inline-block; padding: 4px 12px; 
-            background: #667eea; border-radius: 20px; 
-            font-size: 12px; margin-right: 5px;
-        }
-        .testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-        .testimonial { 
-            background: #1a1a25; padding: 30px; border-radius: 16px; 
-            border: 1px solid #333;
-        }
-        .testimonial p { font-style: italic; color: #ccc; font-size: 16px; margin-bottom: 20px; }
-        .testimonial .author { color: #667eea; font-weight: 600; }
-        .stats { 
-            background: #12121a; padding: 60px 40px; 
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: center;
-        }
-        .stat h3 { font-size: 48px; color: #667eea; margin-bottom: 10px; }
-        .stat p { font-size: 16px; color: #888; }
-        .faq { max-width: 800px; margin: 0 auto; }
-        .faq-item { 
-            background: #1a1a25; padding: 25px; border-radius: 12px; 
-            margin-bottom: 15px; border: 1px solid #333;
-        }
-        .faq-item h4 { font-size: 18px; margin-bottom: 10px; color: #667eea; }
-        .faq-item p { color: #888; font-size: 15px; }
-        footer { padding: 40px; text-align: center; color: #666; margin-top: 60px; }
         @media (max-width: 768px) {
-            .hero h1 { font-size: 42px; }
-            .stats { grid-template-columns: repeat(2, 1fr); }
+            h1 { font-size: 2.5rem; }
+            .grid { grid-template-columns: 1fr; }
+            .stats { gap: 30px; }
         }
     </style>
 </head>
 <body>
-    <section class="hero">
-        <h1>🚀 b3prompt.com</h1>
-        <p>Master the art of AI prompting. Transform vague requests into powerful, precise instructions that get results.</p>
-        <a href="#course" class="cta">Start Learning Free</a>
-    </section>
-    
-    <section class="stats">
-        <div class="stat"><h3>6</h3><p>Modules</p></div>
-        <div class="stat"><h3>10+</h3><p>Templates</p></div>
-        <div class="stat"><h3>20+</h3><p>Exercises</p></div>
-        <div class="stat"><h3>50+</h3><p>Tips & Tricks</p></div>
-    </section>
-    
-    <section class="section" id="course">
-        <h2>📚 Complete Course Curriculum</h2>
-        <div class="modules">
-            <div class="module">
-                <div class="num">1</div>
-                <h3>Prompt Basics</h3>
-                <p>Understanding prompts, why wording matters, and different types of prompts</p>
+    <div class="container">
+        <header>
+            <h1>🚀 T3ch.b3rt.dev</h1>
+            <p class="tagline">Your AI Ecosystem Hub</p>
+            <span class="tag">🤖 Powered by Life OS</span>
+        </header>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">16</div>
+                <div class="stat-label">AI Agents</div>
             </div>
-            <div class="module">
-                <div class="num">2</div>
-                <h3>Structure & Format</h3>
-                <p>How to organize prompts for clarity, readability, and better results</p>
+            <div class="stat">
+                <div class="stat-number">7</div>
+                <div class="stat-label">Core Systems</div>
             </div>
-            <div class="module">
-                <div class="num">3</div>
-                <h3>Specificity</h3>
-                <p>Being precise, avoiding ambiguity, and getting predictable outputs</p>
+            <div class="stat">
+                <div class="stat-number">99</div>
+                <div class="stat-label">Super Swarm</div>
             </div>
-            <div class="module">
-                <div class="num">4</div>
-                <h3>Refinement</h3>
-                <p>Iterating on prompts, debugging outputs, and continuous improvement</p>
-            </div>
-            <div class="module">
-                <div class="num">5</div>
-                <h3>Advanced Tactics</h3>
-                <p>Personas, chain-of-thought, few-shot learning, and expert techniques</p>
-            </div>
-            <div class="module">
-                <div class="num">6</div>
-                <h3>Real-World Applications</h3>
-                <p>Writing, coding, research, business, and creative prompts</p>
+            <div class="stat">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Live Sites</div>
             </div>
         </div>
-    </section>
-    
-    <section class="section" style="background: #12121a;">
-        <h2>💡 Prompt Templates</h2>
-        <div class="templates">
-            <div class="template">
-                <h3>📝 Blog Post Generator</h3>
-                <code>Write a [length] blog post about [topic] 
-for [audience]. Include:
-- Attention-grabbing intro
-- [Number] main points with examples
-- Compelling conclusion with CTA
 
-Tone: [formal/casual/expert]
-Keywords: [keyword1, keyword2]</code>
-                <div>
-                    <span class="tag">Writing</span>
-                    <span class="tag">Marketing</span>
-                </div>
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">📚</div>
+                <h2>AI Prompt Course</h2>
+                <p>Master the art of AI prompting with our comprehensive course. Learn techniques used by top AI practitioners.</p>
+                <a href="https://b3prompt.com">🚀 Go to Course →</a>
             </div>
-            <div class="template">
-                <h3>🐛 Code Debugger</h3>
-                <code>Debug this [language] code:
-```
-[code]
-```
-Error: [error message]
-
-Expected: [what should happen]
-Tried: [what you already checked]
-
-Provide:
-1. Root cause
-2. Fixed code
-3. Explanation</code>
-                <div>
-                    <span class="tag">Coding</span>
-                    <span class="tag">Debugging</span>
-                </div>
+            
+            <div class="card">
+                <div class="card-icon">🤖</div>
+                <h2>AI Agents</h2>
+                <p>Meet your 16 specialized Genesis agents. Each designed for specific tasks and workflows.</p>
+                <a href="https://agents.b3rt.dev">🤖 View All Agents →</a>
             </div>
-            <div class="template">
-                <h3>📊 Data Analysis</h3>
-                <code>Analyze this data:
-[describe data/source]
-
-Questions to answer:
-1. [specific question]
-2. [specific question]
-3. [specific question]
-
-Format:
-- Key findings
-- Visualizations needed
-- Recommendations</code>
-                <div>
-                    <span class="tag">Analysis</span>
-                    <span class="tag">Business</span>
-                </div>
+            
+            <div class="card">
+                <div class="card-icon">🛠️</div>
+                <h2>AI Tools</h2>
+                <p>Powerful tools for content, strategy, analysis, and automation. Built by agents, for agents.</p>
+                <a href="https://tools.b3rt.dev">🛠️ Explore Tools →</a>
             </div>
-            <div class="template">
-                <h3>🎯 Meeting Summary</h3>
-                <code>Summarize this meeting transcript:
-```
-[transcript]
-```
-
-Include:
-- Key decisions made
-- Action items with owners
-- Questions still open
-- Next steps
-
-Format as: Executive summary + detailed notes</code>
-                <div>
-                    <span class="tag">Business</span>
-                    <span class="tag">Productivity</span>
-                </div>
+            
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h2>Market Intelligence</h2>
+                <p>Proactive monitoring of competitors, trends, and opportunities. Stay ahead of the curve.</p>
+                <a href="https://market.b3rt.dev">📊 View Insights →</a>
             </div>
-            <div class="template">
-                <h3>🔍 Research Brief</h3>
-                <code>Research topic: [specific topic]
-
-Requirements:
-- Level: [beginner/intermediate/expert]
-- Sources: [academic/journalists/experts]
-- Focus on: [specific aspect]
-
-Deliverables:
-- Executive summary (200 words)
-- Key findings (bulleted)
-- Knowledge gaps
-- Recommended next steps</code>
-                <div>
-                    <span class="tag">Research</span>
-                    <span class="tag">Learning</span>
-                </div>
+            
+            <div class="card">
+                <div class="card-icon">🎙️</div>
+                <h2>Voice AI</h2>
+                <p>Your personal AI voice. Text-to-speech, announcements, and audio content creation.</p>
+                <a href="https://voice.b3rt.dev">🎙️ Try Voice AI →</a>
             </div>
-            <div class="template">
-                <h3>🎨 Creative Brief</h3>
-                <code>Create [content type] for [platform]:
-
-Project: [description]
-Target audience: [demographics]
-Goal: [what we want them to do/feel]
-Brand voice: [description]
-Must include: [mandatory elements]
-Avoid: [what to stay away from]
-
-Options: Provide 3 variations</code>
-                <div>
-                    <span class="tag">Creative</span>
-                    <span class="tag">Marketing</span>
-                </div>
+            
+            <div class="card">
+                <div class="card-icon">📈</div>
+                <h2>Quality System</h2>
+                <p>Self-improving agents that learn from experience. Continuous optimization and refinement.</p>
+                <a href="https://quality.b3rt.dev">📈 View Quality →</a>
             </div>
         </div>
-    </section>
-    
-    <section class="section">
-        <h2>💪 Practice Exercises</h2>
-        <div class="features">
-            <div class="feature">
-                <h3>🎯 Beginner Exercises</h3>
-                <p>Start with simple prompts. Transform vague requests into clear instructions. Practice with everyday tasks.</p>
-            </div>
-            <div class="feature">
-                <h3>🚀 Intermediate Challenges</h3>
-                <p>Complex multi-part prompts. Conditional logic. Context management. Real-world scenarios.</p>
-            </div>
-            <div class="feature">
-                <h3>🏆 Advanced Mastery</h3>
-                <p>Chain-of-thought reasoning. Few-shot learning. System prompts. Expert-level techniques.</p>
+
+        <div class="card">
+            <div class="card-icon">🔗</div>
+            <h2>Quick Access Tools</h2>
+            <div class="tools-grid">
+                <a href="#" class="tool">🐝 Swarm Task</a>
+                <a href="#" class="tool">📝 Content Pipeline</a>
+                <a href="#" class="tool">📊 Market Scan</a>
+                <a href="#" class="tool">🧠 Agent Review</a>
+                <a href="#" class="tool">✅ Quality Check</a>
+                <a href="#" class="tool">📚 Docs Update</a>
+                <a href="#" class="tool">🎙️ Speak</a>
+                <a href="#" class="tool">📖 Documentation</a>
             </div>
         </div>
-    </section>
-    
-    <section class="section" style="background: #12121a;">
-        <h2>⚡ Quick Tips</h2>
-        <div class="features">
-            <div class="feature">
-                <h3>🎯 Be Specific</h3>
-                <p>"Write about dogs" → "Write a 500-word article about how Golden Retrievers make great family pets, focusing on their temperament with children."</p>
-            </div>
-            <div class="feature">
-                <h3>📋 Use Structure</h3>
-                <p>Break complex requests into numbered steps or bullet points. AI follows instructions better when they're organized.</p>
-            </div>
-            <div class="feature">
-                <h3>🎭 Define Persona</h3>
-                <p>"Act as a senior software engineer with 20 years experience" gets better technical answers than a generic request.</p>
-            </div>
-            <div class="feature">
-                <h3>🔄 Iterate</h3>
-                <p>First prompt rarely perfect. Refine based on output. Treat it as a conversation, not a one-shot.</p>
-            </div>
-            <div class="feature">
-                <h3>📊 Provide Context</h3>
-                <p>The AI doesn't know your situation. Include relevant background, constraints, and goals.</p>
-            </div>
-            <div class="feature">
-                <h3>✅ Verify Output</h3>
-                <p>AI can hallucinate. Always verify facts, especially for important decisions or technical information.</p>
-            </div>
-        </div>
-    </section>
-    
-    <section class="section">
-        <h2>🎓 What You'll Achieve</h2>
-        <div class="features">
-            <div class="feature">
-                <h3>⏱️ Save Time</h3>
-                <p>Better prompts = fewer iterations = more productive. Cut your AI workflow time in half.</p>
-            </div>
-            <div class="feature">
-                <h3>📈 Better Results</h3>
-                <p>Stop getting "meh" outputs. Get exactly what you need, the first time.</p>
-            </div>
-            <div class="feature">
-                <h3>💰 Increase Value</h3>
-                <p>Master a skill that's becoming essential. Add AI prompting to your toolkit.</p>
-            </div>
-        </div>
-    </section>
-    
-    <section class="section" style="background: #12121a;">
-        <h2>💬 Testimonials</h2>
-        <div class="testimonials">
-            <div class="testimonial">
-                <p>"This course completely changed how I work with AI. My prompts went from generic to laser-focused. Game changer!"</p>
-                <div class="author">— Sarah J., Content Manager</div>
-            </div>
-            <div class="testimonial">
-                <p>"Finally understand why my prompts were failing. The structure and specificity modules alone were worth the entire course."</p>
-                <div class="author">— Mike T., Developer</div>
-            </div>
-            <div class="testimonial">
-                <p>"I used to struggle getting AI to write in my brand voice. Now it's one of my strongest tools."</p>
-                <div class="author">— Lisa R., Marketing Director</div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="section">
-        <h2>❓ Frequently Asked Questions</h2>
-        <div class="faq">
-            <div class="faq-item">
-                <h4>Do I need prior experience with AI?</h4>
-                <p>No! We start from the basics and build up to advanced techniques. Complete beginners welcome.</p>
-            </div>
-            <div class="faq-item">
-                <h4>Which AI models does this work with?</h4>
-                <p>Everything! Claude, ChatGPT, Gemini, Llama, Mistral — the principles work across all AI models.</p>
-            </div>
-            <div class="faq-item">
-                <h4>How long does it take to complete?</h4>
-                <p>The core curriculum is about 2-3 hours. Practice exercises vary. Most students finish within a week.</p>
-            </div>
-            <div class="faq-item">
-                <h4>Is this really free?</h4>
-                <p>Yes! The entire course, templates, and exercises are completely free. No hidden costs or upsells.</p>
-            </div>
-            <div class="faq-item">
-                <h4>Can I use this for work/business?</h4>
-                <p>Absolutely! The skills apply directly to professional use — coding, writing, analysis, research, and more.</p>
-            </div>
-        </div>
-    </section>
-    
-    <footer>
-        <p>🚀 b3prompt.com — Master the Art of AI Prompting</p>
-        <p style="margin-top: 10px;">Part of <a href="https://b3rt.dev" style="color: #667eea;">b3rt.dev</a></p>
-    </footer>
+
+        <footer>
+            <p>Built with ❤️ by Bert and AI</p>
+            <p>Powered by <a href="#">OpenClaw</a> | <a href="#">Life OS</a></p>
+            <p style="margin-top: 20px; font-size: 0.9rem;">2026 | The Partnership Works</p>
+        </footer>
+    </div>
 </body>
 </html>
