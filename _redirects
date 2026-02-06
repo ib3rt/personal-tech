@@ -1,2 +1,3 @@
-/articles /articles/index.html 200
-/articles/* /articles/index.html 200
+# Articles routing - remove conflicting rules
+# Cloudflare Pages serves articles/ folder directly
+
